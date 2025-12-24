@@ -564,34 +564,31 @@
       }
     });
   </script>
-  <script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', function () {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+ <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const currentPath = window.location.pathname;
+  const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const linkPage = link.getAttribute('href');
+
+    // Remove existing active states
+    link.classList.remove('active');
+
+    // Exact match only
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+
+      // If inside dropdown, activate parent
+      const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+      if (dropdownToggle) {
+        dropdownToggle.classList.add('active');
       }
-    });
+    }
+  });
+});
+</script>
 
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const currentPage = window.location.pathname.split('/').pop();
-      const navLinks = document.querySelectorAll('.nav-link');
-
-      navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-          link.classList.add('active');
-
-          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
-          if (dropdownToggle) {
-            dropdownToggle.classList.add('active');
-          }
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>

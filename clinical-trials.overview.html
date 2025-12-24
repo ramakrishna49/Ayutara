@@ -220,10 +220,10 @@
 
       </a>
 
-      <!-- Mobile Toggle Button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
-        <i class="bi bi-list fs-2"></i>
-      </button>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+  <i class="bi bi-list fs-2" id="navToggleIcon"></i>
+</button>
+
 
 
       <!-- Navigation Items -->
@@ -498,5 +498,44 @@
       });
     });
   </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggler = document.querySelector(".navbar-toggler");
+  const icon = document.getElementById("navToggleIcon");
+  const menu = document.getElementById("navbarNavDropdown");
+
+  // Toggle ☰ ↔ ✖
+  menu.addEventListener("shown.bs.collapse", () => {
+    icon.classList.replace("bi-list", "bi-x");
+  });
+
+  menu.addEventListener("hidden.bs.collapse", () => {
+    icon.classList.replace("bi-x", "bi-list");
+  });
+
+  // Close ONLY when clicking a final link (not dropdown toggle)
+  document.querySelectorAll(".navbar-nav .nav-link:not(.dropdown-toggle), .dropdown-item")
+    .forEach(link => {
+      link.addEventListener("click", () => {
+        const bsCollapse = bootstrap.Collapse.getInstance(menu);
+        if (bsCollapse) bsCollapse.hide();
+      });
+    });
+
+  // Close when clicking outside navbar
+  document.addEventListener("click", (e) => {
+    if (
+      menu.classList.contains("show") &&
+      !menu.contains(e.target) &&
+      !toggler.contains(e.target)
+    ) {
+      const bsCollapse = bootstrap.Collapse.getInstance(menu);
+      if (bsCollapse) bsCollapse.hide();
+    }
+  });
+});
+</script>
+
+
 </body>
-</html>
+</html>   
