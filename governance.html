@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+    <style>
+        :root {
+            --midnight-blue: #0a1d37;
+            --teal: #0d7b94;
+            --emerald: #1070b9;
+            --ivory: #f8fafc;
+            --cloud: #e2e8f0;
+            --slate: #1e293b;
+            --steel: #475569;
+            --radius-xl: 80px;
+            --radius-lg: 60px;
+            --shadow-float: 0 28px 80px rgba(13, 148, 136, 0.16);
+            --shadow-deep: 0 40px 100px rgba(10, 29, 55, 0.24);
+            --transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+           
+            background: var(--ivory);
+            color: var(--slate);
+            line-height: 1.85;
+            overflow-x: hidden;
+        }
+
+        /* HERO - FULLY RESPONSIVE */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a1d37 0%, #0f2942 50%, #1e3a5f 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: clamp(80px, 15vw, 140px) clamp(16px, 5vw, 32px);
+            overflow: hidden;
+        }
+        .ecg-wave {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent clamp(12px, 3vw, 20px),
+                rgba(13,148,136,0.08) clamp(12px, 3vw, 20px),
+                rgba(13,148,136,0.08) clamp(24px, 6vw, 40px)
+            );
+            opacity: 0.3;
+            z-index: 0;
+            animation: ecgScroll 18s linear infinite;
+        }
+        @keyframes ecgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 0; }
+        }
+        .pulse-ring {
+            position: absolute;
+            width: clamp(280px, 60vw, 420px);
+            height: clamp(280px, 60vw, 420px);
+            border: clamp(2px, 0.6vw, 4px) solid rgba(13,148,136,0.3);
+            border-radius: 50%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease infinite;
+            z-index: 0;
+        }
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+        }
+        .corporate-seal {
+            position: absolute;
+            bottom: clamp(8%, 10vw, 12%);
+            right: clamp(8%, 10vw, 12%);
+            width: clamp(140px, 35vw, 300px);
+            height: auto;
+            opacity: 0.12;
+            z-index: 0;
+            animation: floatSeal 8s ease-in-out infinite;
+        }
+        @keyframes floatSeal {
+            0%, 100% { transform: translateY(0) rotate(2deg); }
+            50% { transform: translateY(-30px) rotate(-2deg); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            padding: clamp(40px, 8vw, 70px);
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 10vw, 9.5rem);
+            font-weight: 900;
+            letter-spacing: clamp(-3px, -0.8vw, -6px);
+            margin-bottom: clamp(1.2rem, 3vw, 2.2rem);
+            background: linear-gradient(135deg, #ffffff, #ccfbf1, #99f6e4, #5eead4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: heartbeat 2.5s ease infinite;
+            line-height: 1.1;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .hero .lead {
+            font-size: clamp(1.1rem, 3.8vw, 1.95rem);
+            color: rgba(255, 255, 255, 0.97);
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 2s ease 1s forwards;
+            line-height: 1.7;
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* SECTION CONTAINER */
+        .section-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 5vw, 48px);
+        }
+
+        /* PRINCIPLES - FULLY RESPONSIVE GRID */
+        .principles {
+            padding: clamp(80px, 12vw, 140px) 0;
+            background: linear-gradient(180deg, #f0fdfa, #ecfdf5);
+        }
+        .principles-title {
+            text-align: center;
+            margin-bottom: clamp(3.5rem, 8vw, 6rem);
+            font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+            font-weight: 800;
+            color: var(--midnight-blue);
+            position: relative;
+            line-height: 1.3;
+        }
+        .principles-title::after {
+            content: '';
+            position: absolute;
+            bottom: clamp(-14px, -3vw, -22px);
+            left: 50%;
+            width: clamp(100px, 25vw, 160px);
+            height: clamp(4px, 1.2vw, 6px);
+            background: linear-gradient(90deg, var(--teal), var(--emerald));
+            border-radius: 3px;
+            transform: translateX(-50%);
+        }
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 70vw, 300px), 1fr));
+            gap: clamp(24px, 5.5vw, 48px);
+        }
+        .principle-card {
+            background: white;
+            border-radius: clamp(40px, 10vw, 64px);
+            padding: clamp(28px, 6vw, 48px);
+            box-shadow: var(--shadow-float);
+            transition: var(--transition);
+            position: relative;
+            border: clamp(1px, 0.3vw, 1.5px) solid rgba(13,148,136,0.15);
+            overflow: hidden;
+        }
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: clamp(6px, 1.5vw, 8px);
+            background: linear-gradient(90deg, var(--teal), var(--emerald));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s ease;
+        }
+        .principle-card:hover::before {
+            transform: scaleX(1);
+        }
+        .principle-card:hover {
+            transform: translateY(clamp(-12px, -3vw, -18px));
+            box-shadow: var(--shadow-deep);
+            border-color: transparent;
+        }
+        .principle-icon {
+            width: clamp(64px, 16vw, 96px);
+            height: clamp(64px, 16vw, 96px);
+            background: linear-gradient(135deg, var(--teal), var(--emerald));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto clamp(20px, 5vw, 32px);
+            color: white;
+            font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+            box-shadow: 0 clamp(12px, 3vw, 16px) clamp(35px, 8vw, 48px) rgba(13,148,136,0.3);
+            position: relative;
+        }
+        .principle-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%);
+            border-radius: 50%;
+            animation: stethoscopePulse 3s ease infinite;
+        }
+        @keyframes stethoscopePulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+        }
+        .principle-title {
+            font-size: clamp(1.15rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--midnight-blue);
+            text-align: center;
+            margin-bottom: clamp(10px, 2.5vw, 16px);
+            line-height: 1.3;
+        }
+        .principle-desc {
+            font-size: clamp(0.88rem, 2.3vw, 1.08rem);
+            color: var(--steel);
+            text-align: center;
+            line-height: 1.75;
+        }
+
+        /* BOARD - RESPONSIVE GRID */
+        .board {
+            padding: clamp(80px, 12vw, 140px) 0;
+            background: white;
+        }
+        .board-title {
+            text-align: center;
+            margin-bottom: clamp(3.5rem, 8vw, 6rem);
+            font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+            font-weight: 800;
+            color: var(--midnight-blue);
+            line-height: 1.3;
+        }
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 65vw, 280px), 1fr));
+            gap: clamp(24px, 5.5vw, 48px);
+        }
+        .director-card {
+            background: var(--ivory);
+            border-radius: clamp(40px, 10vw, 64px);
+            overflow: hidden;
+            box-shadow: var(--shadow-float);
+            transition: var(--transition);
+            position: relative;
+        }
+        .director-card:hover {
+            transform: translateY(clamp(-14px, -3.5vw, -20px));
+            box-shadow: var(--shadow-deep);
+        }
+        .director-img {
+            height: clamp(200px, 50vw, 320px);
+            background: linear-gradient(135deg, var(--teal), var(--emerald));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(4rem, 11vw, 6.5rem);
+            position: relative;
+            overflow: hidden;
+        }
+        .director-img::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: left 0.9s;
+        }
+        .director-card:hover .director-img::before {
+            left: 100%;
+        }
+        .director-body {
+            padding: clamp(24px, 5vw, 44px);
+            text-align: center;
+        }
+        .director-name {
+            font-size: clamp(1.15rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: var(--midnight-blue);
+            margin-bottom: clamp(6px, 1.5vw, 10px);
+            line-height: 1.3;
+        }
+        .director-role {
+            font-size: clamp(0.88rem, 2.3vw, 1.08rem);
+            color: var(--emerald);
+            font-weight: 600;
+            margin-bottom: clamp(10px, 2.5vw, 16px);
+        }
+        .director-bio {
+            font-size: clamp(0.82rem, 2.1vw, 1rem);
+            color: var(--steel);
+            line-height: 1.75;
+        }
+
+        /* DOCUMENTS - RESPONSIVE CARDS */
+        .documents {
+            padding: clamp(80px, 12vw, 140px) 0;
+            background: linear-gradient(135deg, #ecfdf5, #f0fdfa);
+        }
+        .documents-title {
+            text-align: center;
+            margin-bottom: clamp(3.5rem, 8vw, 6rem);
+            font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+            font-weight: 800;
+            color: var(--midnight-blue);
+            line-height: 1.3;
+        }
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 70vw, 300px), 1fr));
+            gap: clamp(24px, 5.5vw, 48px);
+        }
+        .doc-card {
+            background: white;
+            border-radius: clamp(40px, 10vw, 64px);
+            padding: clamp(28px, 6vw, 48px);
+            box-shadow: var(--shadow-float);
+            transition: var(--transition);
+            border: clamp(1.5px, 0.4vw, 2px) dashed rgba(13,148,136,0.2);
+            position: relative;
+        }
+        .doc-card:hover {
+            transform: translateY(clamp(-10px, -2.5vw, -16px));
+            box-shadow: var(--shadow-deep);
+            border-style: solid;
+            border-color: var(--teal);
+        }
+        .doc-icon {
+            width: clamp(68px, 17vw, 100px);
+            height: clamp(68px, 17vw, 100px);
+            background: linear-gradient(135deg, var(--teal), var(--emerald));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto clamp(20px, 5vw, 32px);
+            color: white;
+            font-size: clamp(1.6rem, 4.8vw, 2.3rem);
+            box-shadow: 0 clamp(12px, 3vw, 16px) clamp(35px, 8vw, 48px) rgba(13,148,136,0.3);
+        }
+        .doc-title {
+            font-size: clamp(1.1rem, 2.9vw, 1.45rem);
+            font-weight: 700;
+            color: var(--midnight-blue);
+            text-align: center;
+            margin-bottom: clamp(10px, 2.5vw, 14px);
+            line-height: 1.3;
+        }
+        .doc-desc {
+            font-size: clamp(0.88rem, 2.3vw, 1.05rem);
+            color: var(--steel);
+            text-align: center;
+            margin-bottom: clamp(16px, 4vw, 24px);
+            line-height: 1.75;
+        }
+        .doc-link {
+            display: block;
+            text-align: center;
+            color: var(--teal);
+            font-weight: 600;
+            font-size: clamp(0.85rem, 2.2vw, 1.02rem);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .doc-link:hover {
+            color: var(--emerald);
+            transform: translateY(-3px);
+        }
+
+        /* COMMITTEES - RESPONSIVE GRID */
+        .committees {
+            padding: clamp(80px, 12vw, 140px) 0;
+            background: white;
+        }
+        .committees-title {
+            text-align: center;
+            margin-bottom: clamp(3.5rem, 8vw, 6rem);
+            font-size: clamp(2.2rem, 6.5vw, 3.6rem);
+            font-weight: 800;
+            color: var(--midnight-blue);
+            line-height: 1.3;
+        }
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 70vw, 300px), 1fr));
+            gap: clamp(24px, 5.5vw, 48px);
+        }
+        .committee-card {
+            background: var(--ivory);
+            border-radius: clamp(40px, 10vw, 64px);
+            padding: clamp(28px, 6vw, 48px);
+            box-shadow: var(--shadow-float);
+            transition: var(--transition);
+            border-left: clamp(4px, 1.2vw, 6px) solid var(--teal);
+        }
+        .committee-card:hover {
+            transform: translateY(clamp(-12px, -3vw, -18px));
+            box-shadow: var(--shadow-deep);
+            border-left-color: var(--emerald);
+        }
+        .committee-header {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 4vw, 22px);
+            margin-bottom: clamp(12px, 3vw, 18px);
+        }
+        .committee-icon {
+            width: clamp(50px, 13vw, 76px);
+            height: clamp(50px, 13vw, 76px);
+            background: linear-gradient(135deg, var(--teal), var(--emerald));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+            flex-shrink: 0;
+        }
+        .committee-title {
+            font-size: clamp(1.1rem, 2.9vw, 1.45rem);
+            font-weight: 700;
+            color: var(--midnight-blue);
+            line-height: 1.3;
+        }
+        .committee-desc {
+            font-size: clamp(0.88rem, 2.3vw, 1.05rem);
+            color: var(--steel);
+            margin-bottom: clamp(10px, 2.5vw, 16px);
+            line-height: 1.75;
+        }
+        .committee-members {
+            font-size: clamp(0.82rem, 2.1vw, 1rem);
+            color: var(--slate);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* CTA - FULLY RESPONSIVE */
+        .cta {
+            background: linear-gradient(135deg, var(--midnight-blue), #1e3a5f);
+            color: white;
+            padding: clamp(90px, 14vw, 160px) clamp(20px, 5vw, 48px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .monitor-line {
+            position: absolute;
+            top: 50%; left: 0;
+            width: 100%; height: clamp(1.5px, 0.4vw, 2px);
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(13,148,136,0.3),
+                rgba(13,148,136,0.3) clamp(8px, 2vw, 10px),
+                transparent clamp(8px, 2vw, 10px),
+                transparent clamp(16px, 4vw, 20px)
+            );
+            animation: monitorScroll 12s linear infinite;
+        }
+        @keyframes monitorScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-40px); }
+        }
+        .cta h3 {
+            font-size: clamp(2.3rem, 7vw, 3.8rem);
+            font-weight: 900;
+            margin-bottom: clamp(1.4rem, 3.5vw, 2.2rem);
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
+        }
+        .cta p {
+            max-width: 900px;
+            margin: 0 auto clamp(2rem, 5vw, 4rem);
+            font-size: clamp(1.05rem, 3vw, 1.45rem);
+            opacity: 0.96;
+            position: relative;
+            z-index: 2;
+            line-height: 1.7;
+        }
+        .btn-cta {
+            background: var(--emerald);
+            color: white;
+            padding: clamp(16px, 4.5vw, 28px) clamp(44px, 10vw, 80px);
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+            border: none;
+            box-shadow: 0 clamp(18px, 4.5vw, 24px) clamp(55px, 12vw, 68px) rgba(16,185,129,0.45);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: clamp(12px, 3vw, 20px);
+            position: relative;
+            z-index: 2;
+            text-decoration: none;
+        }
+        .btn-cta:hover {
+            transform: translateY(clamp(-14px, -3.5vw, -20px));
+            box-shadow: 0 clamp(28px, 7vw, 36px) clamp(75px, 16vw, 90px) rgba(16,185,129,0.6);
+            background: white;
+            color: var(--emerald);
+        }
+
+        /* MOBILE & TABLET OPTIMIZATIONS */
+        @media (max-width: 576px) {
+            .hero { padding: 70px 16px; }
+            .hero h1 { letter-spacing: -2px; font-size: 2.8rem; }
+            .hero .lead { font-size: 1.1rem; }
+            .corporate-seal { display: none; }
+            .principle-grid, .board-grid, .doc-grid, .committee-grid {
+                gap: 20px;
+                grid-template-columns: 1fr;
+            }
+            .principle-card, .director-card, .doc-card, .committee-card {
+                padding: 24px 20px;
+                border-radius: 48px;
+            }
+            .btn-cta {
+                padding: 16px 36px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .committee-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            .committee-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-container { padding: 0 16px; }
+            .principles-title, .board-title, .documents-title, .committees-title, .cta h3 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 2.2rem; }
+            .btn-cta { font-size: 0.95rem; }
+            .principle-icon, .doc-icon { width: 72px; height: 72px; }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+            .principle-grid, .board-grid, .doc-grid, .committee-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .principle-grid, .board-grid, .doc-grid, .committee-grid {
+                gap: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item active" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- HERO -->
+    <section class="hero">
+        <div class="ecg-wave"></div>
+        <div class="pulse-ring"></div>
+        <svg class="corporate-seal" viewBox="0 0 200 200" fill="white">
+            <circle cx="100" cy="100" r="90" stroke="white" stroke-width="2" fill="none"/>
+            <circle cx="100" cy="100" r="70" stroke="white" stroke-width="1" fill="none"/>
+            <text x="100" y="105" font-family="serif" font-size="24" fill="white" text-anchor="middle">CORPORATE</text>
+            <text x="100" y="130" font-family="serif" font-size="18" fill="white" text-anchor="middle">GOVERNANCE</text>
+        </svg>
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Corporate Governance</h1>
+            <p class="lead">Charters, policies, and governance resources.</p>
+        </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="principles">
+        <div class="section-container">
+            <h2 class="principles-title" data-aos="fade-up">Governance Principles</h2>
+            <div class="principle-grid">
+                <div class="principle-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="principle-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <div class="principle-title">Integrity First</div>
+                    <div class="principle-desc">Ethical conduct and transparency in all corporate decisions.</div>
+                </div>
+                <div class="principle-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="principle-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="principle-title">Independent Oversight</div>
+                    <div class="principle-desc">Majority-independent board ensures objective governance.</div>
+                </div>
+                <div class="principle-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="principle-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <div class="principle-title">Accountability</div>
+                    <div class="principle-desc">Clear metrics and reporting to shareholders and stakeholders.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOARD -->
+    <section class="board">
+        <div class="section-container">
+            <h2 class="board-title" data-aos="fade-up">Board of Directors</h2>
+            <div class="board-grid">
+                <div class="director-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="director-img"><i class="bi bi-person"></i></div>
+                    <div class="director-body">
+                        <div class="director-name">Elena Martinez</div>
+                        <div class="director-role">Chair & Independent Director</div>
+                        <div class="director-bio">Former regulator with 25+ years in governance and compliance.</div>
+                    </div>
+                </div>
+                <div class="director-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="director-img"><i class="bi bi-person"></i></div>
+                    <div class="director-body">
+                        <div class="director-name">James Liu</div>
+                        <div class="director-role">CEO & Founder</div>
+                        <div class="director-bio">Led company from startup to public listing with strong governance.</div>
+                    </div>
+                </div>
+                <div class="director-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="director-img"><i class="bi bi-person"></i></div>
+                    <div class="director-body">
+                        <div class="director-name">Priya Sharma</div>
+                        <div class="director-role">Independent Director</div>
+                        <div class="director-bio">Expert in corporate finance and ESG reporting standards.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section class="documents">
+        <div class="section-container">
+            <h2 class="documents-title" data-aos="fade-up">Governance Documents</h2>
+            <div class="doc-grid">
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="doc-icon"><i class="bi bi-file-earmark-text"></i></div>
+                    <div class="doc-title">Corporate Charter</div>
+                    <div class="doc-desc">Board structure, duties, and independence requirements.</div>
+                    <a href="#" class="doc-link">Download PDF</a>
+                </div>
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="doc-icon"><i class="bi bi-journal-text"></i></div>
+                    <div class="doc-title">Code of Conduct</div>
+                    <div class="doc-desc">Standards for ethical behavior across all operations.</div>
+                    <a href="#" class="doc-link">View Online</a>
+                </div>
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="doc-icon"><i class="bi bi-shield-lock"></i></div>
+                    <div class="doc-title">Insider Trading Policy</div>
+                    <div class="doc-desc">Rules for securities trading by insiders and employees.</div>
+                    <a href="#" class="doc-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITTEES -->
+    <section class="committees">
+        <div class="section-container">
+            <h2 class="committees-title" data-aos="fade-up">Board Committees</h2>
+            <div class="committee-grid">
+                <div class="committee-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="committee-header">
+                        <div class="committee-icon"><i class="bi bi-calculator"></i></div>
+                        <div class="committee-title">Audit Committee</div>
+                    </div>
+                    <div class="committee-desc">Oversees financial reporting and internal controls.</div>
+                    <div class="committee-members">Chair: Priya Sharma | 3 Members</div>
+                </div>
+                <div class="committee-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="committee-header">
+                        <div class="committee-icon"><i class="bi bi-cash-coin"></i></div>
+                        <div class="committee-title">Compensation Committee</div>
+                    </div>
+                    <div class="committee-desc">Sets executive pay aligned with performance.</div>
+                    <div class="committee-members">Chair: Elena Martinez | 3 Members</div>
+                </div>
+                <div class="committee-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="committee-header">
+                        <div class="committee-icon"><i class="bi bi-award"></i></div>
+                        <div class="committee-title">Nominating & Governance</div>
+                    </div>
+                    <div class="committee-desc">Identifies directors and reviews governance practices.</div>
+                    <div class="committee-members">Chair: Prof. Chen | 3 Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" data-aos="fade-up">
+        <div class="monitor-line"></div>
+        <div class="section-container">
+            <h3>Stay Updated on Governance</h3>
+            <p>Receive alerts on board changes, policies, and annual meetings.</p>
+            <a href="#" class="btn-cta">
+                Subscribe Now <i class="bi bi-bell"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1600,
+            once: true,
+            offset: 180
+        });
+    </script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+ <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/script.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <style>
+    :root {
+      --navy-dark: #062e3f;
+      --navy: #063a4b;
+      --white: #ffffff;
+      --light-bg: #f0fbff;
+      --accent: #a0c5e8;
+      --text-dark: #0d2a3e;
+      --text-muted: #1d3b53;
+      --glow: 0 0 50px rgba(160, 183, 232, 0.35);
+      --shadow: 0 20px 40px rgba(6, 58, 75, 0.15);
+      --gradient: linear-gradient(135deg, #062e3f 0%, #063a4b 100%);
+      --accent-gradient: linear-gradient(90deg, #8c7ae6, #00aaff);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .parallax-container {
+      perspective: 1px;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      transform-style: preserve-3d;
+      scroll-behavior: smooth;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+    }
+
+    .back-layer {
+      transform: translateZ(-1px) scale(2);
+      background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      filter: brightness(0.45) contrast(1.2);
+    }
+
+    .front-layer {
+      transform: translateZ(0);
+      background: transparent;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #f5fcff 0%, var(--light-bg) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 9px;
+      background: var(--gradient);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1631214508070-7b3e6c96d7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      filter: brightness(0.35) contrast(1.3);
+      z-index: 1;
+      transform: scale(1.12);
+      transition: transform 1.2s ease;
+    }
+
+    .hero:hover .hero-bg {
+      transform: scale(1.18);
+    }
+
+    .dna-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 650px;
+      height: 650px;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .dna-overlay svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 30px rgba(160, 216, 232, 0.3));
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: var(--glow);
+      animation: float-up linear infinite;
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      90% {
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+    }
+
+    .hero-logo {
+      width: 180px;
+      margin: 0 auto 2.5rem;
+      animation: float-logo 6s ease-in-out infinite;
+      border: 8px solid rgba(255, 255, 255, 0.97);
+      border-radius: 50%;
+      box-shadow: 0 30px 80px rgba(6, 46, 63, .35);
+    }
+
+    @keyframes float-logo {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(6, 58, 75, 0.12);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(160, 216, 232, 0.4);
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 2rem;
+      box-shadow: var(--glow);
+      animation: pulse-glow 2.8s infinite;
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 30px rgba(160, 216, 232, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 60px rgba(160, 216, 232, 0.6);
+      }
+    }
+
+    .hero h1 {
+      font-size: 5.2rem;
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto 3.5rem;
+      color: var(--text-muted);
+      opacity: 0.92;
+      line-height: 1.65;
+    }
+
+    .hero-cta .btn {
+      padding: 1.25rem 3rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      min-width: 220px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+      box-shadow: 0 12px 30px rgba(6, 58, 75, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-dark);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(6, 58, 75, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .section-divider {
+      height: 8px;
+      background: var(--light-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--accent) 50%, transparent);
+      opacity: 0.6;
+      animation: slide 3s linear infinite;
+    }
+
+    @keyframes slide {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    .challenge {
+      padding: 8rem 0;
+      background: #f8fdff;
+      text-align: center;
+      position: relative;
+    }
+
+    .challenge::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      background: var(--accent);
+    }
+
+    .challenge h2 {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--navy);
+    }
+
+    .challenge p {
+      font-size: 1.25rem;
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      color: var(--text-muted);
+    }
+
+    .challenge-visual {
+      position: relative;
+      height: 500px;
+      margin: 4rem 0;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 10px solid rgba(255, 255, 255, 0.97);
+    }
+
+    .challenge-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .challenge-visual:hover .challenge-img {
+      transform: scale(1.05);
+    }
+
+    .challenge-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient);
+      opacity: 0;
+      transition: opacity 0.5s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .challenge-visual:hover .challenge-overlay {
+      opacity: 0.9;
+    }
+
+    .smart-missile {
+      padding: 8rem 0;
+      background: var(--white);
+    }
+
+    .missile-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .missile-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .missile-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .missile-animation {
+      position: relative;
+      height: 500px;
+      background: #f8fdff;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid var(--accent);
+      box-shadow: 0 25px 50px rgba(6, 46, 63, .16);
+    }
+
+    .missile {
+      position: absolute;
+      width: 120px;
+      animation: missile-launch 4s ease-in-out infinite;
+    }
+
+    @keyframes missile-launch {
+      0% {
+        transform: translateX(-200px) translateY(300px) rotate(-45deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        transform: translateX(300px) translateY(-100px) rotate(-45deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(500px) translateY(-200px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    .target-cell {
+      position: absolute;
+      top: 50%;
+      right: 100px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #8c7ae6, #00aaff);
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(140, 122, 230, 0.6);
+      animation: pulse-cell 2s infinite;
+    }
+
+    @keyframes pulse-cell {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .tech-stack {
+      position: relative;
+      padding: 10rem 0;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .tech-bg-image {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1631214508070-7b3e6c96d7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover fixed;
+      filter: brightness(0.92) contrast(1.1);
+      z-index: 1;
+    }
+
+    .tech-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 2;
+    }
+
+    .tech-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .tech-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--navy);
+      position: relative;
+    }
+
+    .tech-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 3px;
+      box-shadow: var(--glow);
+    }
+
+    .tech-subtitle {
+      text-align: center;
+      font-size: 1.3rem;
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      color: var(--text-muted);
+    }
+
+    .tech-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: var(--shadow);
+      border-left: 14px solid var(--accent);
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(160, 216, 232, 0.15), transparent);
+      transition: 0.7s;
+    }
+
+    .tech-card:hover::before {
+      left: 100%;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(6, 58, 75, 0.2);
+      border-color: var(--navy);
+    }
+
+    .tech-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: var(--glow);
+      animation: iconPulse 2s infinite;
+    }
+
+    @keyframes iconPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .tech-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--navy);
+    }
+
+    .tech-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .clinical-impact {
+      padding: 8rem 0;
+      background: #f8fdff;
+      text-align: center;
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 3rem;
+      margin: 4rem 0;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .pipeline {
+      padding: 8rem 0;
+      background: var(--white);
+    }
+
+    .pipeline-timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 2rem 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      z-index: 1;
+    }
+
+    .timeline-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background: var(--accent-gradient);
+      transition: width 2s ease;
+    }
+
+    .timeline-dot {
+      width: 20px;
+      height: 20px;
+      background: var(--navy);
+      border: 4px solid var(--accent);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      box-shadow: var(--glow);
+    }
+
+    .final-cta {
+      padding: 8rem 0;
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: var(--navy);
+      padding: 1.2rem 3rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      text-decoration: none;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 1200px) {
+      .hero h1 {
+        font-size: 4.5rem;
+      }
+
+      .dna-overlay {
+        width: 550px;
+        height: 550px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero {
+        min-height: 700px;
+      }
+
+      .hero h1 {
+        font-size: 3.8rem;
+      }
+
+      .missile-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .missile-animation {
+        height: 400px;
+      }
+
+      .tech-title {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 5rem 0;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+      }
+
+      .hero-cta {
+      
+        gap: 1.2rem;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .dna-overlay {
+        width: 400px;
+        height: 400px;
+      }
+
+      .hero-logo {
+        width: 130px;
+      }
+
+      .tech-stack {
+        padding: 6rem 0;
+      }
+
+      .tech-title {
+        font-size: 2.5rem;
+      }
+
+      .tech-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero-badge {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.3rem;
+      }
+
+      .dna-overlay {
+        width: 320px;
+        height: 320px;
+      }
+
+      .hero-logo {
+        width: 110px;
+      }
+    }
+
+    /* PDE4 SECTION */
+.pde4-section {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.pde4-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  color: var(--navy);
+}
+
+.pde4-subtitle {
+  text-align: center;
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.pde4-card {
+  background: #f8fdff;
+  border-radius: 32px;
+  padding: 2.8rem;
+  height: 100%;
+  box-shadow: var(--shadow);
+  border-left: 14px solid var(--accent);
+  transition: transform 0.4s ease;
+}
+
+.pde4-card:hover {
+  transform: translateY(-12px);
+}
+/* PRECISION DEEP SECTION */
+.precision-deep {
+  padding: 8rem 0;
+  background: #f8fdff;
+}
+
+.precision-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  color: var(--navy);
+}
+
+.precision-subtitle {
+  text-align: center;
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.precision-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.precision-list li {
+  font-size: 1.1rem;
+  margin-bottom: 1.4rem;
+  padding-left: 1.8rem;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.precision-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.precision-box {
+  background: white;
+  border-radius: 32px;
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  border-left: 14px solid var(--accent);
+}
+
+  </style>
+
+</head>
+
+<body>
+  <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item active" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+              <li><a class="dropdown-item" href="pipeline.overview.html">Pipeline</a></li>
+            </ul>
+          </li>
+
+         
+
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  <div class="parallax-container">
+    <div class="parallax-layer back-layer"></div>
+    <div class="parallax-layer front-layer">
+
+      <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="dna-overlay">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 20 C80 20, 60 40, 60 60 C60 80, 80 100, 100 100 C120 100, 140 80, 140 60 C140 40, 120 20, 100 20 Z 
+                     M100 180 C120 180, 140 160, 140 140 C140 120, 120 100, 100 100 C80 100, 60 120, 60 140 C60 160, 80 180, 100 180 Z"
+              fill="none" stroke="var(--accent)" stroke-width="3" />
+            <path d="M80 50 L120 50 M80 70 L120 70 M80 130 L120 130 M80 150 L120 150" stroke="#8c7ae6"
+              stroke-width="2" />
+            <circle cx="100" cy="100" r="85" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.3" />
+          </svg>
+        </div>
+
+        <div class="container">
+          <div class="hero-content">
+            <img src="https://via.placeholder.com/180x180/063a4b/ffffff?text=AYUTARA" alt="Ayutara Logo"
+              class="hero-logo">
+            <div class="hero-badge">Targeted Radiotherapeutics</div>
+            <h1>Precision in Healing<br>for Tomorrow's Health</h1>
+            <p>Engineered radiopharmaceuticals that deliver lethal radiation with surgical accuracy — destroying cancer
+              cells while preserving healthy tissue.</p>
+            <div class="hero-cta d-flex justify-content-center gap-3 flex-wrap">
+              <a href="#technology" class="btn btn-primary">Explore Technology</a>
+              <a href="#pipeline" class="btn btn-secondary">View Pipeline</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="challenge">
+        <div class="container">
+          <h2>The Century-Old Radiation Dilemma</h2>
+          <p>Powerful enough to kill tumors. Too dangerous for healthy cells. Until now.</p>
+          <div class="challenge-visual">
+            <img
+              src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+              alt="Radiation Damage" class="challenge-img" />
+            <div class="challenge-overlay">Traditional Radiation: Collateral Damage</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="smart-missile">
+        <div class="container">
+          <div class="missile-container">
+            <div class="missile-content">
+              <h2>Therapies That Act Like<br><span
+                  style="background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Smart
+                  Missiles</span></h2>
+              <p>Our proprietary platform combines advanced ligand design, optimized chelators, and therapeutic isotopes
+                to create targeted radiopharmaceuticals that deliver lethal radiation <strong>only to cancer
+                  cells</strong>.</p>
+              <p>One dose. One target. Maximum impact.</p>
+            </div>
+            <div class="missile-animation">
+              <img src="https://via.placeholder.com/120x40/063a4b/ffffff?text=MISSILE" alt="Missile" class="missile"
+                style="top:300px;left:0;animation-delay:0s;" />
+              <img src="https://via.placeholder.com/120x40/063a4b/ffffff?text=MISSILE" alt="Missile" class="missile"
+                style="top:250px;left:0;animation-delay:1s;" />
+              <img src="https://via.placeholder.com/120x40/063a4b/ffffff?text=MISSILE" alt="Missile" class="missile"
+                style="top:350px;left:0;animation-delay:2s;" />
+              <div class="target-cell"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="tech-stack" id="technology">
+        <div class="tech-bg-image"></div>
+        <div class="tech-overlay"></div>
+        <div class="container tech-content">
+          <h2 class="tech-title">Our Precision Technology Stack</h2>
+          <p class="tech-subtitle">Every component engineered for unmatched specificity, stability, and therapeutic
+            power — from ligand to isotope.</p>
+
+          <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="tech-card h-100">
+                <div class="tech-icon mx-auto"><i class="fas fa-crosshairs text-white"></i></div>
+                <h3>Hyper-Selective Ligands</h3>
+                <p>Bind exclusively to tumor-specific receptors with sub-nanomolar affinity for zero off-target effects.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="tech-card h-100">
+                <div class="tech-icon mx-auto"><i class="fas fa-link text-white"></i></div>
+                <h3>Optimized Chelators</h3>
+                <p>Lock radioisotopes with extreme stability — no leakage, no damage to healthy organs.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="tech-card h-100">
+                <div class="tech-icon mx-auto"><i class="fas fa-atom text-white"></i></div>
+                <h3>Alpha & Beta Emitters</h3>
+                <p>High-LET alpha particles for DNA destruction; beta for deeper tissue penetration.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="tech-card h-100">
+                <div class="tech-icon mx-auto"><i class="fas fa-shield-alt text-white"></i></div>
+                <h3>Biodistribution Control</h3>
+                <p>Rapid clearance from healthy organs, prolonged retention in tumors for maximum efficacy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="clinical-impact">
+        <div class="container">
+          <h2>Life-Changing Clinical Outcomes</h2>
+          <p>Precision isn't theoretical — it's measurable in lives saved and quality preserved.</p>
+          <div class="impact-stats">
+            <div class="stat-item">
+              <div class="stat-number">95%</div>
+              <p>Tumor Targeting Accuracy</p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">87%</div>
+              <p>Reduction in Side Effects</p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1</div>
+              <p>Single-Dose Protocol</p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">40%</div>
+              <p>Pediatric Applications</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="pipeline">
+        <div class="container">
+          <h2 style="text-align:center;">Development Pipeline</h2>
+          <p style="text-align:center;max-width:800px;margin:0 auto 4rem;color:var(--text-muted);">From discovery to
+            clinic — advancing multiple candidates across solid tumors and rare cancers.</p>
+          <div class="pipeline-timeline">
+            <div class="timeline-line">
+              <div style="width:75%;"></div>
+            </div>
+            <div class="row g-4">
+              <div class="col-lg-3 col-md-6">
+                <div class="timeline-item text-center">
+                  <div class="timeline-dot"></div>
+                  <h4>AYT-101</h4>
+                  <p>Neuroendocrine Tumors<br><strong>Phase II</strong></p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="timeline-item text-center">
+                  <div class="timeline-dot"></div>
+                  <h4>AYT-204</h4>
+                  <p>Pediatric Sarcoma<br><strong>Phase I</strong></p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="timeline-item text-center">
+                  <div class="timeline-dot"></div>
+                  <h4>AYT-307</h4>
+                  <p>Prostate Cancer<br><strong>Preclinical</strong></p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="timeline-item text-center">
+                  <div class="timeline-dot"></div>
+                  <h4>AYT-410</h4>
+                  <p>Brain Tumors<br><strong>Discovery</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section class="final-cta">
+        <div class="container">
+          <div class="cta-content">
+            <h2>The Future of Cancer Therapy Is Here</h2>
+            <p>Join us in redefining what's possible in oncology. Precision. Power. Hope.</p>
+            <a href="#contact" class="cta-btn">Partner With Us</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <section class="pde4-section">
+  <div class="container">
+    <h2 class="pde4-title">PDE4 Prodrug Platform</h2>
+    <p class="pde4-subtitle">
+      A next-generation prodrug strategy engineered to unlock anti-inflammatory
+      potency while eliminating systemic toxicity.
+    </p>
+
+    <div class="row g-4 mt-5">
+      <div class="col-lg-4">
+        <div class="pde4-card">
+          <h4>Targeted Activation</h4>
+          <p>
+            The prodrug remains inert in circulation and is selectively activated
+            at disease-relevant tissue microenvironments, ensuring localized efficacy.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="pde4-card">
+          <h4>Reduced Systemic Toxicity</h4>
+          <p>
+            By avoiding widespread PDE4 inhibition, gastrointestinal and CNS-related
+            side effects are significantly minimized.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="pde4-card">
+          <h4>Optimized Oral Delivery</h4>
+          <p>
+            Designed for once-daily oral dosing with consistent exposure and
+            predictable pharmacokinetics.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="precision-deep">
+  <div class="container">
+    <h2 class="precision-title">Precision at the Cellular Level</h2>
+    <p class="precision-subtitle">
+      Every component of Ayutara’s platform is engineered to deliver radiation
+      with surgical accuracy — sparing healthy tissue while maximizing tumor kill.
+    </p>
+
+    <div class="row align-items-center g-5 mt-5">
+      <div class="col-lg-6">
+        <ul class="precision-list">
+          <li>
+            <strong>Ligand Engineering:</strong> Ultra-high affinity ligands bind
+            exclusively to tumor-specific receptors.
+          </li>
+          <li>
+            <strong>Chelator Stability:</strong> Radioisotopes remain securely bound
+            throughout circulation and decay.
+          </li>
+          <li>
+            <strong>Biodistribution Control:</strong> Rapid clearance from kidneys
+            and marrow reduces off-target exposure.
+          </li>
+          <li>
+            <strong>Clinical Scalability:</strong> Designed for GMP manufacturing
+            and global regulatory approval.
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="precision-box">
+          <h4>Measured Outcomes</h4>
+          <p>
+            Precision delivery results in higher tumor residence time, lower
+            toxicity, and reproducible clinical performance across patient
+            populations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <script>
+    function createParticle() {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const s = Math.random() * 4 + 2;
+      p.style.width = p.style.height = `${s}px`;
+      p.style.left = `${Math.random() * 100}vw`;
+      p.style.animationDuration = `${Math.random() * 18 + 12}s`;
+      p.style.animationDelay = `${Math.random() * 5}s`;
+      document.querySelector('.hero').appendChild(p);
+      setTimeout(() => p.remove(), 35000);
+    }
+    setInterval(createParticle, 450);
+
+    window.addEventListener('scroll', () => {
+      const s = window.pageYOffset;
+      document.querySelector('.back-layer').style.transform = `translateZ(-1px) scale(2) translateY(${s * 0.5}px)`;
+    });
+
+    const timelineObserver = new IntersectionObserver(e => e.forEach(en => {
+      if (en.isIntersecting) en.target.querySelector('.timeline-line div').style.width = '75%';
+    }), { threshold: 0.5 });
+    document.querySelectorAll('.pipeline-timeline').forEach(el => timelineObserver.observe(el));
+
+    const observer = new IntersectionObserver(e => e.forEach(en => {
+      if (en.isIntersecting) en.target.classList.add('animate__animated', 'animate__fadeInUp');
+    }), { threshold: 0.2 });
+    document.querySelectorAll('.tech-card, .stat-item, .timeline-item, .challenge-visual').forEach(el => observer.observe(el));
+  </script>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies
+            for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+  <script>
+    // FAST loader – hide as soon as DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("pageLoader");
+      if (loader) loader.classList.add("hidden");
+    });
+
+    // SAFETY fallback (never get stuck)
+    setTimeout(() => {
+      document.getElementById("pageLoader")?.classList.add("hidden");
+    }, 2500);
+  </script>
+
+</body>
+
+</html>

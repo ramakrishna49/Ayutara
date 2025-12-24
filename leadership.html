@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+   <style>
+    :root {
+      --navy: #062e3f;
+      --teal: #063a4b;
+      --light-bg: #f0fbff;
+      --white: #ffffff;
+      --accent: #00aaff;
+      --text-dark: #0d2a3e;
+      --text-darker: #041f2d;
+    }
+
+    body {
+      font-family:'Inter',sans-serif;
+      background:var(--white);
+      color:var(--text-dark);
+      line-height:1.6;
+    }
+
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 1rem 0;
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      padding: 0.7rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary) !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      background: var(--primary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: var(--dark) !important;
+      margin: 0 0.3rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--primary) !important;
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .navbar-nav .nav-link.active {
+      color: var(--primary) !important;
+      font-weight: 600;
+    }
+
+    .navbar-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .dropdown-item {
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      transition: var(--transition);
+    }
+
+    .dropdown-item:hover {
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    /* HERO */
+    .hero {
+      background:linear-gradient(135deg, var(--light-bg) 0%, #d0e8f0 100%);
+      padding:140px 0 100px;
+      text-align: center;
+    }
+
+    /* CARD DESIGN */
+    .team-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #d5e8f5;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+      transition: .3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 20px 45px rgba(0,0,0,0.22);
+    }
+
+    .team-img {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      object-fit: cover;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .team-role {
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: var(--teal);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .team-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    .tag-box {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 50px;
+      background: #e9f7ff;
+      border: 1px solid #96dafc;
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .divider {
+      width: 40%;
+      height: 2px;
+      margin: 16px auto;
+      background: #063a4b;
+    }
+
+   
+    /* CTA */
+    .cta {
+      background:linear-gradient(135deg, #063a4b, #00aaff);
+      padding: 80px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-btn {
+      background: #ffffff;
+      border-radius: 50px;
+      padding: 0.9rem 2.5rem;
+      font-weight: 700;
+      border: none;
+      color: var(--teal);
+      transition: .3s;
+    }
+    .cta-btn:hover {
+      background: #e1e1e1;
+    }
+
+    @media (max-width:576px) {
+      .team-img {
+        width: 125px;
+        height: 125px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle  active" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item  active" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="hero">
+  <div class="container">
+      <h1 class="fw-bold mb-3 display-4" data-aos="fade-up">  Leadership Team
+    </h1>
+    <p class="fs-4 text-dark opacity-90" >
+      World-class Scientists & Clinical Experts
+    </p>
+  </div>
+</section>
+
+
+<!-- TEAM -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- CEO -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800" class="team-img">
+          <div class="team-role">Founder & CEO</div>
+          <h4 class="team-title">Dr. Kiran Rao</h4>
+          <p class="small text-muted">20+ yrs | Nuclear Oncology | Ex-BARC</p>
+
+          <div class="divider"></div>
+
+          <div class="tag-box">
+            <span class="tag">Theranostics</span>
+            <span class="tag">PET/CT</span>
+            <span class="tag">R&D</span>
+            <span class="tag">Lu-177</span>
+          </div>
+
+          <p>
+            Led India’s largest radiopharmacy chain expansion and developed safe-delivery protocols.
+          </p>
+        </div>
+      </div>
+
+      <!-- CMO -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800" class="team-img">
+          <div class="team-role">Chief Medical Officer</div>
+          <h4 class="team-title">Dr. Meera Singhal</h4>
+          <p class="small text-muted">12+ yrs | Ex-AIIMS | PSMA Expertise</p>
+
+          <div class="divider"></div>
+
+          <div class="tag-box">
+            <span class="tag">AI Dosimetry</span>
+            <span class="tag">Clinical Trials</span>
+            <span class="tag">PSMA</span>
+          </div>
+
+          <p>
+            Specialist in prostate & neuroendocrine cancers through targeted radiotherapy.
+          </p>
+        </div>
+      </div>
+
+      <!-- CSO -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800" class="team-img">
+          <div class="team-role">Chief Scientific Officer</div>
+          <h4 class="team-title">Dr. Rohan Desai</h4>
+          <p class="small text-muted">Ex-Novartis | Radiopharma R&D</p>
+
+          <div class="divider"></div>
+
+          <div class="tag-box">
+            <span class="tag">Ac-225</span>
+            <span class="tag">Chemistry</span>
+            <span class="tag">Radiochemistry</span>
+          </div>
+
+          <p>
+            Developed Ac-225 supply chain & novel radioligand synthesis models.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MEDICAL ADVISORY BOARD -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5">Medical Advisory Board</h2>
+
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800" class="team-img">
+          <div class="team-role">Advisor</div>
+          <h4 class="team-title">Prof. Rakesh Menon</h4>
+          <p class="small text-muted">30+ yrs | Global Oncology</p>
+
+          <div class="divider"></div>
+
+          <div class="tag-box">
+            <span class="tag">Neuro Oncology</span>
+            <span class="tag">Proton Therapy</span>
+          </div>
+
+          <p>Former director of Proton Therapy Center.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=800" class="team-img">
+          <div class="team-role">Advisor</div>
+          <h4 class="team-title">Dr. Anita Kapoor</h4>
+          <p class="small text-muted">Theranostics Researcher</p>
+
+          <div class="divider"></div>
+
+          <div class="tag-box">
+            <span class="tag">Molecular Imaging</span>
+            <span class="tag">Clinical Safety</span>
+          </div>
+
+          <p>Expert in global nuclear medicine protocols.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800" class="team-img">
+          <div class="team-role">Advisor</div>
+          <h4 class="team-title">Dr. Rahul Sharma</h4>
+          <p class="small text-muted">Alpha Radiotherapy Specialist</p>
+
+          <div class="divider"></div>
+
+          <div class="tag-box">
+            <span class="tag">Ac-225</span>
+            <span class="tag">Lu-177</span>
+          </div>
+
+          <p>Pioneer of targeted alpha therapy in India.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Together, We Can Fight Cancer</h2>
+    <p class="mb-4">Reach out to explore treatment pathways.</p>
+    <button class="cta-btn">Contact Us →</button>
+  </div>
+</section>
+
+
+
+
+<!-- SCRIPTS -->
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration:1200,
+    once:true,
+    easing:'ease-out-cubic'
+  });
+</script>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+ <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/script.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

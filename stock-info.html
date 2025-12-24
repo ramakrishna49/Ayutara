@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+ <style>
+        :root {
+            --deep-space: #0b1120;
+            --electric-blue: #3b82f6;
+            --neon-cyan: #06c1f5;
+            --slate-blue: #1e293b;
+            --light-steel: #e2e8f0;
+            --snow: #f8fafc;
+            --charcoal: #334155;
+            --radius-xl: 40px;
+            --radius-lg: 28px;
+            --shadow-glow: 0 20px 60px rgba(59, 130, 246, 0.18);
+            --shadow-deep: 0 25px 80px rgba(11, 17, 32, 0.22);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+          
+            background: var(--snow);
+            color: var(--charcoal);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 80vh;
+            background: radial-gradient(circle at 30% 70%, #1e293b 0%, var(--deep-space) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 16px 60px;
+            overflow: hidden;
+            perspective: 1500px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1920') center/cover no-repeat;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgba(6, 205, 245, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: orbit 20s infinite linear;
+            z-index: 1;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.13);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            padding: 50px 30px;
+            max-width: 900px;
+            border: 1.5px solid rgba(255, 255, 255, 0.28);
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.3),
+                inset 0 6px 20px rgba(255, 255, 255, 0.15);
+            position: relative;
+            z-index: 2;
+            transform-style: preserve-3d;
+            transition: var(--transition);
+        }
+
+        .hero-content:hover {
+            transform: rotateX(4deg) rotateY(-4deg) translateZ(15px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 0.8rem;
+            letter-spacing: -1.8px;
+            background: linear-gradient(135deg, #ffffff, var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 35px rgba(6, 173, 245, 0.35);
+        }
+
+        .hero .lead {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.94);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            font-weight: 400;
+        }
+
+        /* TICKER BAR */
+        .ticker-bar {
+            background: var(--slate-blue);
+            color: white;
+            padding: 12px 0;
+            font-weight: 600;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: scroll-left 40s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .ticker-item {
+            display: inline-block;
+            margin-right: 40px;
+            font-size: 0.95rem;
+        }
+
+        .ticker-item .price {
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        /* QUOTE CARD */
+        .quote-section {
+            padding: 70px 16px;
+            background: linear-gradient(135deg, #f8fafc, #e0e7ff);
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 40px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-deep);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-cyan));
+        }
+
+        .quote-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .quote-symbol {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--deep-space);
+        }
+
+        .quote-exchange {
+            font-size: 1rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        .quote-price {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--electric-blue);
+            margin: 12px 0;
+        }
+
+        .quote-change {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quote-change.negative {
+            color: #ef4444;
+        }
+
+        .quote-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-space);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+        }
+
+        /* CHART SECTION */
+        .chart-section {
+            padding: 80px 16px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--deep-space);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--neon-cyan));
+            border-radius: 4px;
+        }
+
+        .chart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #f8fafc;
+            border-radius: var(--radius-xl);
+            padding: 30px 20px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* KEY METRICS */
+        .metrics {
+            padding: 80px 16px;
+            background: linear-gradient(135deg, #eef2ff, #dbeafe);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-glow);
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .metric-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--neon-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--deep-space);
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* ANALYST TARGETS */
+        .analyst-targets {
+            padding: 80px 16px;
+            background: white;
+        }
+
+        .target-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8fafc, #eef2ff);
+            border-radius: var(--radius-xl);
+            padding: 40px 24px;
+            box-shadow: var(--shadow-glow);
+            text-align: center;
+        }
+
+        .target-price {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--electric-blue);
+            margin: 16px 0;
+        }
+
+        .target-upside {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 20px;
+        }
+
+        .target-range {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+            font-size: 1rem;
+        }
+
+        .range-item {
+            background: white;
+            padding: 14px 20px;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .range-label {
+            font-weight: 600;
+        }
+
+        .range-value {
+            font-weight: 700;
+            color: var(--electric-blue);
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--deep-space), var(--slate-blue));
+            color: white;
+            padding: 90px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(6, 213, 245, 0.15) 0%, transparent 70%);
+            animation: pulse 12s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .cta h3 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2.2rem;
+            font-size: 1.1rem;
+            opacity: 0.92;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta {
+            background: var(--neon-cyan);
+            color: var(--deep-space);
+            padding: 16px 44px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            border: none;
+            box-shadow: 0 15px 40px rgba(6, 193, 245, 0.35);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 22px 50px rgba(6, 245, 201, 0.45);
+            background: white;
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (min-width: 1200px) {
+            .hero {
+                padding: 100px 20px 70px;
+            }
+
+            .hero-content {
+                padding: 60px 50px;
+            }
+
+            .quote-card,
+            .chart-container,
+            .target-card {
+                padding: 50px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .quote-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .target-range {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                min-height: 75vh;
+                padding: 70px 5% 50px;
+            }
+
+            .hero-content {
+                padding: 45px 30px;
+            }
+
+            .quote-header {
+                gap: 10px;
+            }
+
+            .quote-price {
+                font-size: 2.8rem;
+            }
+
+            .quote-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .target-range {
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+                padding: 60px 4% 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero .lead {
+                font-size: 1.1rem;
+            }
+
+            .ticker-item {
+                margin-right: 30px;
+                font-size: 0.9rem;
+            }
+
+            .quote-card,
+            .chart-container,
+            .target-card {
+                padding: 35px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .cta h3 {
+                font-size: 2.1rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 65vh;
+                padding: 50px 4% 35px;
+            }
+
+            .hero-content {
+                padding: 35px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero .lead {
+                font-size: 1rem;
+            }
+
+            .quote-symbol {
+                font-size: 2rem;
+            }
+
+            .quote-price {
+                font-size: 2.4rem;
+            }
+
+            .quote-change {
+                font-size: 1.1rem;
+            }
+
+            .stat-value {
+                font-size: 1.3rem;
+            }
+
+            .metric-value {
+                font-size: 1.8rem;
+            }
+
+            .target-price {
+                font-size: 2.8rem;
+            }
+
+            .btn-cta {
+                padding: 14px 36px;
+                font-size: 1rem;
+            }
+
+            .orbit-ring {
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content:hover {
+                transform: none;
+            }
+
+            .range-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 6px;
+            }
+        }
+    </style>
+  
+</head>
+<body>
+    <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item active" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- HERO -->
+    <section class="hero">
+        <div class="orbit-ring"></div>
+        <div class="hero-content" data-aos="zoom-in">
+            <h1 class="display-5 text-white">Stock Information</h1>
+            <p class="lead">Key stock data and quotes.</p>
+        </div>
+    </section>
+
+    <!-- TICKER BAR -->
+    <div class="ticker-bar">
+        <div class="ticker-content">
+            <span class="ticker-item">MDSF <span class="price">$201.45</span> +3.21 (+1.62%)</span>
+            <span class="ticker-item">Volume: 2.4M</span>
+            <span class="ticker-item">Market Cap: $18.2B</span>
+            <span class="ticker-item">52W High: $298.00</span>
+            <span class="ticker-item">52W Low: $142.50</span>
+            <span class="ticker-item">P/E: 42.8</span>
+            <span class="ticker-item">EPS: $4.70</span>
+            <span class="ticker-item">Dividend: $0.00 (0.00%)</span>
+            <span class="ticker-item">MDSF <span class="price">$201.45</span> +3.21 (+1.62%)</span>
+        </div>
+    </div>
+
+    <!-- CURRENT QUOTE -->
+    <section class="quote-section" data-aos="fade-up">
+        <div class="quote-card">
+            <div class="quote-header">
+                <div>
+                    <div class="quote-symbol">MDSF</div>
+                    <div class="quote-exchange">NASDAQ</div>
+                </div>
+                <div class="text-center">
+                    <div class="quote-price">$201.45</div>
+                    <div class="quote-change">
+                        <i class="bi bi-arrow-up-right"></i> +$3.21 (+1.62%)
+                    </div>
+                </div>
+            </div>
+            <div class="quote-stats">
+                <div class="stat-item">
+                    <div class="stat-value">2.4M</div>
+                    <div class="stat-label">Volume</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$18.2B</div>
+                    <div class="stat-label">Market Cap</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$298.00</div>
+                    <div class="stat-label">52W High</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$142.50</div>
+                    <div class="stat-label">52W Low</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">42.8</div>
+                    <div class="stat-label">P/E Ratio</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$4.70</div>
+                    <div class="stat-label">EPS (TTM)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICE CHART -->
+    <section class="chart-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Price Performance</h2>
+        </div>
+        <div class="chart-container" data-aos="fade-up" data-aos-delay="100">
+            <canvas id="priceChart"></canvas>
+        </div>
+    </section>
+
+    <!-- KEY METRICS -->
+    <section class="metrics">
+        <div class="metrics-grid">
+            <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="metric-icon">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="metric-value">$288</div>
+                <div class="metric-label">Analyst Target</div>
+            </div>
+            <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="metric-icon">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="metric-value">+42.9%</div>
+                <div class="metric-label">Upside Potential</div>
+            </div>
+            <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="metric-icon">
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="metric-value">Strong Buy</div>
+                <div class="metric-label">Consensus Rating</div>
+            </div>
+            <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="metric-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="metric-value">18</div>
+                <div class="metric-label">Covering Analysts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANALYST PRICE TARGETS -->
+    <section class="analyst-targets" data-aos="fade-up">
+        <div class="target-card">
+            <h3>Average Analyst Price Target</h3>
+            <div class="target-price">$288.00</div>
+            <div class="target-upside">+42.9% from current</div>
+            <div class="target-range">
+                <div class="range-item">
+                    <span class="range-label">Low</span>
+                    <span class="range-value">$260</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">Median</span>
+                    <span class="range-value">$290</span>
+                </div>
+                <div class="range-item">
+                    <span class="range-label">High</span>
+                    <span class="range-value">$320</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" data-aos="fade-up">
+        <h3>Monitor MDSF in Real-Time</h3>
+        <p>Get live quotes, analyst alerts, and portfolio tracking tools.</p>
+        <button class="btn-cta">
+            Open Trading Platform <i class="bi bi-box-arrow-up-right"></i>
+        </button>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 60
+        });
+
+        // Responsive Chart
+        const ctx = document.getElementById('priceChart').getContext('2d');
+        const priceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'MDSF Price',
+                    data: [145, 158, 162, 170, 182, 195, 188, 192, 198, 201, 201.45],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#3b82f6',
+                    pointRadius: 4,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(11, 17, 32, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        cornerRadius: 10,
+                        displayColors: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#64748b', maxRotation: 0 }
+                    },
+                    y: {
+                        grid: { color: 'rgba(226, 232, 240, 0.5)' },
+                        ticks: { color: '#64748b' }
+                    }
+                }
+            }
+        });
+
+        // Resize chart on window resize
+        window.addEventListener('resize', () => {
+            priceChart.resize();
+        });
+    </script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+<script src="/assets/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

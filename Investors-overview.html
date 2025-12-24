@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayutara - Innovating Medicine</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Icons (Bootstrap Icons) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <style>
+        :root {
+            --blue-900: #0B2F4A;
+            --blue-800: #11486F;
+            --blue-700: #1E5F91;
+            --blue-600: #2563EB;
+            --blue-500: #3B82F6;
+            --sky-200: #E8F1FF;
+            --sky-100: #F3F8FF;
+            --white: #fff;
+            --text: #3A4757;
+
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-sm: 0 6px 16px rgba(16, 55, 97, .09);
+            --shadow-md: 0 12px 28px rgba(16, 55, 97, .12);
+        }
+
+        /* RESET */
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--white);
+            color: var(--text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all .8s ease;
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: none;
+        }
+
+        .delay-1 {
+            transition-delay: .15s
+        }
+
+        .delay-2 {
+            transition-delay: .3s
+        }
+
+        .delay-3 {
+            transition-delay: .45s
+        }
+
+        /* BUTTONS */
+        .btn-pill {
+            padding: 12px 26px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        .btn-blue {
+            background: var(--blue-600);
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background: var(--blue-700);
+        }
+
+        .btn-outline-blue {
+            border: 1px solid var(--blue-600);
+            color: var(--blue-700);
+        }
+
+        .btn-outline-blue:hover {
+            background: var(--blue-600);
+            color: white;
+        }
+
+        /* =============== HERO =============== */
+        .hero {
+            background: linear-gradient(90deg, var(--sky-100), #ffffff);
+            padding: 90px 0;
+        }
+
+        .hero-box {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--sky-200);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            font-weight: 900;
+            color: var(--blue-900);
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-top: 10px;
+        }
+
+        @media(max-width:992px) {
+            .hero-box {
+                text-align: center
+            }
+        }
+
+        /* =============== STAT RINGS =============== */
+        .stats {
+            background: var(--white);
+            padding: 60px 0;
+        }
+
+        .stat-badge {
+            background: var(--sky-100);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            padding: 22px;
+            border: 1px solid var(--sky-200);
+            transition: .3s;
+        }
+
+        .stat-badge:hover {
+            background: var(--sky-200);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-num {
+            color: var(--blue-700);
+            font-weight: 900;
+            font-size: 2rem;
+        }
+
+        /* =============== STRATEGY =============== */
+        .strategy {
+            padding: 90px 0;
+            background: var(--white);
+        }
+
+        .strategy-block {
+            background: var(--sky-100);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--sky-200);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .strategy-item {
+            background: var(--white);
+            border: 1px solid var(--sky-200);
+            padding: 22px;
+            border-radius: var(--radius-md);
+            transition: .3s;
+        }
+
+        .strategy-item:hover {
+            background: var(--sky-200);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* =============== PIPELINE (TIMELINE) =============== */
+        .pipeline {
+            background: var(--sky-100);
+            padding: 80px 0;
+        }
+
+        .stage {
+            background: var(--white);
+            padding: 22px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--sky-200);
+            text-align: center;
+            transition: .3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stage:hover {
+            background: var(--sky-200);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* =============== NEWS =============== */
+        .news {
+            background: var(--white);
+            padding: 90px 0;
+        }
+
+        .news-card {
+            background: var(--sky-100);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--sky-200);
+            padding: 26px;
+            transition: .3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .news-card:hover {
+            background: var(--sky-200);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+        }
+
+        .ribbon {
+            background: var(--blue-700);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: .85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* =============== REPORTS (horizontal) =============== */
+        .reports {
+            background: var(--sky-100);
+            padding: 80px 0;
+        }
+
+        .report-item {
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--sky-200);
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            transition: .3s;
+        }
+
+        .report-item:hover {
+            background: var(--sky-200);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* =============== CTA =============== */
+        .cta {
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: white;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--sky-200);
+            padding: 40px;
+            max-width: 820px;
+            margin: auto;
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-text">
+            <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+            <span>.</span><span>.</span><span>.</span>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <!-- Logo and Brand -->
+            <a class="navbar-brand" style="gap: 16px;" href="index.html">
+                <div class="logo-icon">
+                    <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px;  border-radius: 50px;">
+                </div>
+
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+                <i class="bi bi-list fs-2"></i>
+            </button>
+
+
+            <!-- Navigation Items -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Home -->
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">Home</a>
+                    </li>
+
+                    <!-- About -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                            <li><a class="dropdown-item" href="board.html">Board</a></li>
+                            <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Tech -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+                            Technology
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+                            <li><a class="dropdown-item" href="tech-precision.html">Precision</a></li>
+                            <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Pipeline -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="pipelineDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Pipeline
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pipeline.overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="pali-2108.html">PALI-2108</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Clinical Trials -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="clinicalDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Clinical Trials
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="trails-overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="clinical-pali-2108.html">Clinical PALI-2108</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Investors -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" id="investorsDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            Investors
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="Investors-overview.html">Overview</a></li>
+                            <li><a class="dropdown-item" href="press.html">Press</a></li>
+                            <li><a class="dropdown-item" href="events.html">Events</a></li>
+                            <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+                            <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+                            <li><a class="dropdown-item " href="investor-contacts.html">Investor Contacts</a></li>
+                            <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+                            <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+                            <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+                            <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+                            <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Contact -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+
+                <!-- Left -->
+                <div class="col-lg-6 reveal">
+                    <div class="hero-box">
+                        <h1 class="hero-title">Investors & News</h1>
+                        <p class="hero-text">Supporting the future of precision radiopharmaceuticals through
+                            transparency and disciplined clinical growth.</p>
+                        <div class="mt-4 d-flex gap-2 flex-wrap">
+                            <a href="#news" class="btn btn-pill btn-blue">Latest News</a>
+                            <a href="#reports" class="btn btn-pill btn-outline-blue">Reports</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right -->
+                <div class="col-lg-6 reveal delay-1">
+                    <img src="https://images.unsplash.com/photo-1580281657527-47d78e8d0a8b?w=900"
+                        style="border-radius:18px;box-shadow:var(--shadow-md)" />
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3 reveal">
+                    <div class="stat-badge">
+                        <div class="stat-num">12+</div><small>Partners</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal delay-1">
+                    <div class="stat-badge">
+                        <div class="stat-num">$250M</div><small>Funding</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal delay-2">
+                    <div class="stat-badge">
+                        <div class="stat-num">5</div><small>Trials</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal delay-3">
+                    <div class="stat-badge">
+                        <div class="stat-num">3</div><small>Assets</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGY -->
+    <section class="strategy">
+        <div class="container">
+
+            <div class="strategy-block reveal">
+                <h2 class="fw-bold text-center mb-3" style="color:var(--blue-900)">Our Strategic Vision</h2>
+                <p class="text-center" style="max-width:680px;margin:auto">
+                    We responsibly scale radiopharmaceutical innovation through clinical execution and sustainable
+                    infrastructure.
+                </p>
+            </div>
+
+            <div class="row g-4 mt-4">
+                <div class="col-md-6 reveal delay-1">
+                    <div class="strategy-item">
+                        <h5>Clinical First</h5>
+                        <p>Real-world physicians guide every program.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 reveal delay-2">
+                    <div class="strategy-item">
+                        <h5>Global Access</h5>
+                        <p>Supply chain built for sustainable patient impact.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="pipeline">
+        <div class="container text-center">
+
+            <h2 class="fw-bold reveal" style="color:var(--blue-900)">Pipeline</h2>
+            <p class="reveal delay-1" style="max-width:680px;margin:8px auto">
+                Forward momentum through carefully staged clinical development.
+            </p>
+
+            <div class="row g-4 mt-4">
+                <div class="col-6 col-md-3 reveal">
+                    <div class="stage">
+                        <h5>Pre-clinical</h5><small>Discovery</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal delay-1">
+                    <div class="stage">
+                        <h5>Phase I</h5><small>Safety</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal delay-2">
+                    <div class="stage">
+                        <h5>Phase II</h5><small>Efficacy</small>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 reveal delay-3">
+                    <div class="stage">
+                        <h5>Phase III</h5><small>Reg.</small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="news">
+        <div class="container">
+
+            <h2 class="fw-bold text-center reveal" style="color:var(--blue-900)">News & Press</h2>
+            <p class="text-center reveal delay-1" style="max-width:680px;margin:auto">
+                Clinical, financial, and partnership updates.
+            </p>
+
+            <div class="row g-4 mt-4">
+
+                <div class="col-lg-4 reveal">
+                    <div class="news-card">
+                        <span class="ribbon">Jan 2025</span>
+                        <h5>Series C Round Secured</h5>
+                        <p>Funding to accelerate global clinical expansion.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 reveal delay-1">
+                    <div class="news-card">
+                        <span class="ribbon">Dec 2024</span>
+                        <h5>Phase II Fully Enrolled</h5>
+                        <p>10+ sites completed enrollment ahead of schedule.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 reveal delay-2">
+                    <div class="news-card">
+                        <span class="ribbon">Oct 2024</span>
+                        <h5>EU Manufacturing Expansion</h5>
+                        <p>New collaboration to scale production.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- REPORTS -->
+    <section id="reports" class="reports">
+        <div class="container">
+
+            <h2 class="fw-bold text-center reveal" style="color:var(--blue-900)">Investor Reports</h2>
+
+            <div class="row g-4 mt-4">
+                <div class="col-md-12 reveal">
+                    <div class="report-item"><strong>Corporate Overview</strong><span>PDF →</span></div>
+                </div>
+                <div class="col-md-12 reveal delay-1">
+                    <div class="report-item"><strong>Annual Report</strong><span>PDF →</span></div>
+                </div>
+                <div class="col-md-12 reveal delay-2">
+                    <div class="report-item"><strong>Investor Deck</strong><span>PDF →</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h3 class="fw-bold" style="color: #0B2F4A;">Connect With Investor Relations</h3>
+                <p style="max-width:580px;margin:8px auto; color: #0B2F4A;">
+                    Partnering to build the future of radiopharmaceutical care.
+                </p>
+                <button class="btn btn-pill btn-blue mt-2">Contact Us →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ Scroll Reveal -->
+    <script>
+        const els = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in-view');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: .15 });
+        els.forEach(el => io.observe(el));
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo" style="gap: 16px;">
+                        <div class="logo-icon">
+                            <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+                        </div>
+                        Ayutara
+                    </div>
+                    <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule
+                        therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+                    <h5 class="footer-heading">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="about-overview.html">About Us</a></li>
+                        <li><a href="leadership.html">Leadership</a></li>
+                        <li><a href="board.html">Board</a></li>
+                        <li><a href="presentations.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+                    <h5 class="footer-heading">Technology</h5>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Our Approach</a></li>
+                        <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+                        <li><a href="tech-precision.html">Precision</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-heading">Investors</h5>
+                    <ul class="footer-links">
+                        <li><a href="Investors-overview.html">Overview</a></li>
+                        <li><a href="stock-info.html">Stock Info</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="sec-filings.html">SEC Filings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-heading">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="pipeline.overview.html">Pipeline</a></li>
+                        <li><a href="trails-overview.html">Clinical Trials</a></li>
+                        <li><a href="press.html">News</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/script.j"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+
+                    const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+                    if (dropdownToggle) {
+                        dropdownToggle.classList.add('active');
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+  // FAST loader – hide as soon as DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("pageLoader");
+    if (loader) loader.classList.add("hidden");
+  });
+
+  // SAFETY fallback (never get stuck)
+  setTimeout(() => {
+    document.getElementById("pageLoader")?.classList.add("hidden");
+  }, 2500);
+</script>
+
+</body>
+
+</html>

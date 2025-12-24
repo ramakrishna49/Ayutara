@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+   <style>
+        :root {
+            --teal: #0d9488;
+            --teal-light: #ccf1fb;
+            --teal-dark: #115e59;
+            --blue: #1e40af;
+            --gray: #f8fafc;
+            --ink: #1e293b;
+            --steel: #475569;
+            --radius-lg: 1.5rem;
+            --shadow: 0 12px 30px rgba(13, 148, 136, 0.12);
+            --shadow-deep: 0 20px 50px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --card-height: 280px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+           
+            background: var(--gray);
+            color: var(--ink);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #0f5776 0%, #11435e 100%);
+            color: white;
+            padding: 6rem 1rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero .lead {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .stethoscope-icon {
+            font-size: 4rem;
+            color: var(--teal-light);
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        /* ===== BENEFITS CARDS - UNIFORM SIZE ===== */
+        .benefits {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: var(--card-height);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-deep);
+            z-index: 2;
+        }
+
+        .benefit-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            background: var(--teal-light);
+            color: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(13, 123, 148, 0.15);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: var(--teal);
+            color: white;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-desc {
+            color: var(--steel);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* ===== ALERT TYPES - UNIFORM CARD SIZE ===== */
+        .alert-types {
+            padding: 5rem 0;
+            background: var(--teal-light);
+        }
+
+        .alert-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: var(--card-height);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-item:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .alert-icon {
+            font-size: 1.8rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .alert-item:hover .alert-icon {
+            transform: translateX(8px);
+        }
+
+        .alert-content h5 {
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.6rem;
+            font-size: 1.1rem;
+        }
+
+        .alert-content p {
+            color: var(--steel);
+            font-size: 0.92rem;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* ===== TESTIMONIALS - UNIFORM CARD SIZE ===== */
+        .testimonials {
+            padding: 5rem 0;
+            background: #f1f5f9;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            height: var(--card-height);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--steel);
+            margin-bottom: 1rem;
+            font-size: 0.96rem;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--teal-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover .author-img {
+            background: var(--teal);
+            color: white;
+        }
+
+        .author-info h6 {
+            margin: 0;
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+
+        .author-info small {
+            color: var(--steel);
+            font-size: 0.8rem;
+        }
+
+        /* ===== SUBSCRIPTION FORM ===== */
+        .subscribe {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .form-card {
+            background: var(--gray);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-control, .form-select {
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #cbd5e1;
+            transition: var(--transition);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 148, 0.15);
+        }
+
+        .btn-subscribe {
+            background: var(--teal);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            transition: var(--transition);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-subscribe::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-subscribe:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-subscribe:hover {
+            background: var(--teal-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(13, 107, 148, 0.3);
+        }
+
+      
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .benefit-card, .alert-item, .testimonial-card {
+                height: auto;
+                min-height: 260px;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 5rem 1rem 3rem; }
+            .form-card { padding: 2rem; }
+            .benefit-card, .alert-item, .testimonial-card {
+                padding: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stethoscope-icon { font-size: 3.2rem; }
+            .benefit-icon { width: 4rem; height: 4rem; font-size: 1.6rem; }
+            .btn-subscribe { font-size: 0.95rem; padding: 0.8rem; }
+        }
+
+        @media (hover: none) {
+            .benefit-card:hover, .alert-item:hover, .testimonial-card:hover,
+            .btn-subscribe:hover {
+                transform: none !important;
+            }
+        }
+    </style>
+  
+</head>
+<body>
+    <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item active" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+   
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container hero-content" data-aos="fade-up">
+            <div class="stethoscope-icon">
+                <i class="bi bi-heart-pulse"></i>
+            </div>
+            <h1 class="display-5">Email Alerts</h1>
+            <p class="lead">Subscribe to updates from Ayutara.</p>
+            <p class="mt-3">Stay informed with the latest medical guidelines, drug approvals, CME events, and research breakthroughs delivered directly to your inbox.</p>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-bell"></i></div>
+                        <h5 class="benefit-title">Real-Time Updates</h5>
+                        <p class="benefit-desc">Get instant alerts on new drug approvals, clinical trial results, and regulatory changes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-journal-medical"></i></div>
+                        <h5 class="benefit-title">CME & Webinars</h5>
+                        <p class="benefit-desc">Never miss accredited continuing medical education events and expert-led webinars.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
+                        <h5 class="benefit-title">Evidence-Based</h5>
+                        <p class="benefit-desc">Curated content from trusted sources: NEJM, Lancet, FDA, ICMR, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALERT TYPES -->
+    <section class="alert-types">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">What You'll Receive</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="alert-item">
+                        <i class="bi bi-capsule alert-icon"></i>
+                        <div class="alert-content">
+                            <h5>New Drug Approvals & Recalls</h5>
+                            <p>Immediate notifications when CDSCO/FDA approves or recalls medications relevant to your specialty.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="alert-item">
+                        <i class="bi bi-file-medical alert-icon"></i>
+                        <div class="alert-content">
+                            <h5>Clinical Guidelines Updates</h5>
+                            <p>Latest updates from NMC, IMA, WHO, and specialty associations (cardiology, oncology, etc.).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="alert-item">
+                        <i class="bi bi-calendar-event alert-icon"></i>
+                        <div class="alert-content">
+                            <h5>Upcoming CME & Conferences</h5>
+                            <p>Personalized event recommendations with registration links and early-bird deadlines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="alert-item">
+                        <i class="bi bi-graph-up-arrow alert-icon"></i>
+                        <div class="alert-content">
+                            <h5>Research & Publications</h5>
+                            <p>Weekly digest of high-impact studies from top journals tailored to your practice area.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBSCRIPTION FORM -->
+    <section class="subscribe">
+        <div class="container">
+            <div class="form-card" data-aos="fade-up">
+                <h3 class="text-center mb-4">Subscribe Now</h3>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Dr. Priya Sharma" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="priya@hospital.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Specialty</label>
+                        <select class="form-select">
+                            <option>General Medicine</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                            <option>Oncology</option>
+                            <option>Pediatrics</option>
+                            <option>Others</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alert Frequency</label>
+                        <select class="form-select">
+                            <option>Daily Digest</option>
+                            <option>Weekly Summary</option>
+                            <option>Real-Time Alerts</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-subscribe">
+                        <i class="bi bi-bell"></i> Subscribe to Alerts
+                    </button>
+                </form>
+                <p class="text-center mt-3 text-muted small">
+                    Zero spam. Unsubscribe anytime. HIPAA-compliant.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Trusted by Doctors</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Ayutara keeps me updated without overwhelming my inbox. The CME alerts are a lifesaver."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">RS</div>
+                            <div class="author-info">
+                                <h6>Dr. Rajesh Singh</h6>
+                                <small>Cardiologist, Apollo Hospital</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I discovered three new treatment protocols last month — all thanks to Ayutara's curated alerts."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">NM</div>
+                            <div class="author-info">
+                                <h6>Dr. Neha Mehta</h6>
+                                <small>Oncologist, Tata Memorial</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Clean, professional, and relevant. Finally, an email service made for doctors."</p>
+                        <div class="testimonial-author">
+                            <div class="author-img">AK</div>
+                            <div class="author-info">
+                                <h6>Dr. Arjun Kumar</h6>
+                                <small>Neurologist, AIIMS Delhi</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 80,
+            easing: 'ease-out-quart'
+        });
+
+        // Ripple effect on subscribe button
+        document.querySelector('.btn-subscribe').addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+
+        // Add ripple CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn-subscribe { position: relative; overflow: hidden; }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.6);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+            @keyframes ripple {
+                to { transform: scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+<script src="/assets/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

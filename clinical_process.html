@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Process | Ayutara Therapeutics</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #062e3f;
+      --navy-dark: #041f2d;
+      --accent: #a0c5e8;
+      --light-bg: #f0fbff;
+      --white: #ffffff;
+      --text-dark: #0d2a3e;
+      --text-muted: #4b6b7a;
+      --shadow: 0 20px 45px rgba(6, 58, 75, 0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ===== HERO / STATUS BANNER ===== */
+    .status-banner {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #f5fcff 0%, var(--light-bg) 100%);
+      padding: 6rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .status-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--navy), var(--accent));
+    }
+
+    .status-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .status-banner h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--navy);
+    }
+
+    .status-banner p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+    }
+
+    .status-highlight {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.6rem;
+      border-radius: 50px;
+      background: rgba(6, 58, 75, 0.08);
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ===== SECTION BASE ===== */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section.light {
+      background: var(--light-bg);
+    }
+
+    .section h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--navy);
+    }
+
+    .placeholder-text {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      background: #ffffff;
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border-left: 8px solid var(--accent);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-dark);
+      color: #c8e8f5;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .section {
+        padding: 4.5rem 1rem;
+      }
+      .placeholder-text {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= STATUS BANNER ================= -->
+  <section class="status-banner">
+    <div class="container">
+      <div class="status-icon">
+        <i class="bi bi-hourglass-split"></i>
+      </div>
+
+      <h1>Clinical Process</h1>
+
+      <p>
+        Our clinical development program is progressing in a structured,
+        science-driven manner aligned with global regulatory standards.
+      </p>
+
+      <div class="status-highlight">
+        Currently in the <strong>Pre-Clinical Stage</strong>. Updates will be shared as progress is made.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRE-CLINICAL SECTION ================= -->
+  <section class="section">
+    <div class="container">
+      <h2>Pre-Clinical Development</h2>
+
+      <div class="placeholder-text">
+        Content for the Pre-Clinical Trial section is currently awaited from the client.
+        Based on the scientific data, study objectives, and regulatory direction provided,
+        the team will define the detailed content, visual elements, and final layout for
+        this section.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLINICAL TRIAL SECTION ================= -->
+  <section class="section light">
+    <div class="container">
+      <h2>Clinical Trials</h2>
+
+      <div class="placeholder-text">
+        Content for the Clinical Trial section is currently awaited from the client.
+        Once information regarding trial phases, indications, timelines, and enrollment
+        strategy is shared, the team will finalize the structure, data presentation,
+        and overall design of this section.
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    © 2025 Ayutara Therapeutics. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

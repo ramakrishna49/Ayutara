@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+   <style>
+        :root {
+            --midnight: #0a0e1a;
+            --royal-blue: #1d4ed8;
+            --emerald: #1078b9;
+            --pearl: #f8fafc;
+            --cloud: #e2e8f0;
+            --ink: #1e293b;
+            --steel: #475569;
+            --radius-xl: 3rem;
+            --radius-lg: 2rem;
+            --shadow-float: 0 20px 60px rgba(29, 78, 216, 0.14);
+            --shadow-deep: 0 30px 80px rgba(10, 14, 26, 0.2);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+           
+            background: var(--pearl);
+            color: var(--ink);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container,
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 70vh;
+            background: linear-gradient(145deg, #0f172a 0%, #111827 50%, #1e293b 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(29, 78, 216, 0.15) 0%, transparent 50%);
+            animation: gradientShift 22s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-8%, 6%) scale(1.1);
+            }
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 6px 20px rgba(255, 255, 255, 0.15);
+            animation: floatOrb 14s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .orb:nth-child(1) {
+            width: 18rem;
+            height: 18rem;
+            top: 10%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 14rem;
+            height: 14rem;
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .orb:nth-child(3) {
+            width: 11rem;
+            height: 11rem;
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatOrb {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-2rem) rotate(8deg);
+            }
+        }
+
+        .parallax-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .layer-back {
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920') center/cover no-repeat;
+            opacity: 0.04;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-radius: var(--radius-xl);
+            padding: 3.5rem 2.5rem;
+            max-width: 1000px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 40px 110px rgba(0, 0, 0, 0.35), inset 0 10px 32px rgba(255, 255, 255, 0.18);
+            position: relative;
+            z-index: 3;
+            transition: var(--transition);
+        }
+
+        .hero-content:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 55px 130px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: -0.15rem;
+            background: linear-gradient(135deg, #ffffff, #ecfdf5, #a7f2f3, #6ebde7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 70px rgba(16, 151, 185, 0.6);
+            animation: titlePulse 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            0% {
+                text-shadow: 0 0 70px rgba(16, 140, 185, 0.6), 0 0 100px rgba(16, 185, 129, 0.3);
+            }
+
+            100% {
+                text-shadow: 0 0 90px rgba(16, 185, 129, 0.8), 0 0 130px rgba(16, 185, 129, 0.5);
+            }
+        }
+
+        .hero .lead {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.97);
+            max-width: 760px;
+            margin: 0 auto;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(1.5rem);
+            animation: fadeInUp 1.4s ease 0.7s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-section {
+            padding: 5rem 0;
+            background: var(--pearl);
+        }
+
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--royal-blue), var(--emerald));
+            border-radius: 3px;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(29, 78, 216, 0.3);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-left: 50%;
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 0;
+            padding-right: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.8rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow-float);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-0.6rem);
+            box-shadow: var(--shadow-deep);
+            border-color: transparent;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2.2rem;
+            width: 1.4rem;
+            height: 1.4rem;
+            background: var(--emerald);
+            border: 6px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 7px rgba(16, 185, 129, 0.25);
+            z-index: 2;
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 7px rgba(16, 185, 129, 0.25);
+            }
+
+            50% {
+                box-shadow: 0 0 0 12px rgba(16, 185, 129, 0.15);
+            }
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .timeline-type {
+            background: linear-gradient(135deg, var(--royal-blue), var(--emerald));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+        }
+
+        .timeline-date {
+            font-size: 0.88rem;
+            color: var(--steel);
+            font-weight: 500;
+        }
+
+        .timeline-title {
+            font-size: clamp(1.15rem, 3vw, 1.3rem);
+            font-weight: 700;
+            color: var(--midnight);
+            margin-bottom: 0.7rem;
+        }
+
+        .timeline-desc {
+            font-size: clamp(0.9rem, 2.5vw, 0.98rem);
+            color: var(--steel);
+            margin-bottom: 1rem;
+            line-height: 1.65;
+        }
+
+        .timeline-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .timeline-link {
+            color: var(--royal-blue);
+            font-weight: 600;
+            font-size: clamp(0.85rem, 2.2vw, 0.92rem);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+        }
+
+        .timeline-link:hover {
+            color: var(--emerald);
+            transform: translateX(0.2rem);
+        }
+
+        /* ===== DOCUMENTS GRID ===== */
+        .documents {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .doc-card {
+            background: var(--pearl);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-float);
+            transition: var(--transition);
+        }
+
+        .doc-card:hover {
+            transform: translateY(-0.6rem);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .doc-icon {
+            height: 8.5rem;
+            background: linear-gradient(135deg, var(--royal-blue), var(--emerald));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.8rem;
+        }
+
+        .doc-body {
+            padding: 1.5rem;
+        }
+
+        .doc-title {
+            font-size: clamp(1.1rem, 2.8vw, 1.2rem);
+            font-weight: 700;
+            color: var(--midnight);
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-info {
+            font-size: clamp(0.82rem, 2.2vw, 0.9rem);
+            color: var(--steel);
+            margin-bottom: 0.8rem;
+        }
+
+        .doc-actions {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .doc-btn {
+            flex: 1;
+            padding: 0.6rem;
+            border-radius: 0.75rem;
+            font-size: clamp(0.78rem, 2vw, 0.85rem);
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .doc-btn.pdf {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .doc-btn.xbrl {
+            background: #dbeafe;
+            color: var(--royal-blue);
+        }
+
+        .doc-btn:hover {
+            transform: translateY(-0.15rem);
+        }
+
+        /* ===== CATEGORIES & RESOURCES ===== */
+        .categories,
+        .resources {
+            padding: 5rem 0;
+        }
+
+        .categories {
+            background: var(--pearl);
+        }
+
+        .resources {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+        }
+
+        .category-grid,
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .category-card,
+        .resource-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2.2rem 1.8rem;
+            text-align: center;
+            box-shadow: var(--shadow-float);
+            transition: var(--transition);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .category-card:hover,
+        .resource-card:hover {
+            transform: translateY(-0.6rem);
+            box-shadow: var(--shadow-deep);
+            border-color: transparent;
+        }
+
+        .category-icon,
+        .resource-icon {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, var(--royal-blue), var(--emerald));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.4rem;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 30px rgba(29, 78, 216, 0.2);
+        }
+
+        .category-title,
+        .resource-title {
+            font-size: clamp(1.15rem, 3vw, 1.3rem);
+            font-weight: 700;
+            color: var(--midnight);
+            margin-bottom: 0.7rem;
+        }
+
+        .category-desc,
+        .resource-desc {
+            font-size: clamp(0.88rem, 2.3vw, 0.96rem);
+            color: var(--steel);
+            line-height: 1.6;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: linear-gradient(135deg, var(--midnight), #111827);
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+            animation: rotate 35s infinite linear;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cta h3 {
+            font-size: clamp(2rem, 6vw, 2.6rem);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2.2rem;
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            opacity: 0.94;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta {
+            background: var(--emerald);
+            color: white;
+            padding: clamp(0.9rem, 3.5vw, 1.1rem) clamp(2.5rem, 8vw, 3.5rem);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            border: none;
+            box-shadow: 0 18px 50px rgba(16, 185, 129, 0.4);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-0.6rem);
+            box-shadow: 0 28px 60px rgba(16, 185, 129, 0.5);
+            background: white;
+            color: var(--emerald);
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media (max-width: 992px) {
+            .hero {
+                min-height: 90vh;
+                padding: 5rem 1rem 3rem;
+            }
+
+            .orb {
+                display: none;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                justify-content: center;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-line {
+                left: 2rem;
+            }
+
+            .timeline-dot {
+                left: 2rem !important;
+                transform: translateX(0) !important;
+            }
+
+            .timeline-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 85vh;
+                padding: 4.5rem 1rem 2.5rem;
+            }
+
+            .timeline-section,
+            .documents,
+            .categories,
+            .resources,
+            .cta {
+                padding: 3.5rem 0;
+            }
+
+            .documents-grid,
+            .category-grid,
+            .resource-grid {
+                gap: 1.2rem;
+            }
+
+            .doc-icon {
+                height: 7.5rem;
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content {
+                padding: 2.8rem 1.8rem;
+                border-radius: 2.5rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-dot {
+                width: 1.1rem;
+                height: 1.1rem;
+                border-width: 4px;
+                top: 1.8rem;
+            }
+
+            .timeline-type {
+                font-size: 0.74rem;
+                padding: 0.35rem 0.75rem;
+            }
+
+            .category-icon,
+            .resource-icon {
+                width: 4.2rem;
+                height: 4.2rem;
+                font-size: 1.5rem;
+            }
+
+            .btn-cta {
+                padding: 0.9rem 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .documents-grid,
+            .category-grid,
+            .resource-grid {
+                gap: 1rem;
+            }
+
+            .doc-icon {
+                height: 7rem;
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-content {
+                padding: 2.2rem 1.2rem;
+            }
+
+            .timeline-content {
+                padding: 1.2rem;
+            }
+
+            .category-card,
+            .resource-card {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        @media (hover: none) {
+
+            .hero-content:hover,
+            .timeline-content:hover,
+            .doc-card:hover,
+            .category-card:hover,
+            .resource-card:hover,
+            .btn-cta:hover {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item active" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- HERO -->
+    <section class="hero">
+        <div class="parallax-layer layer-back"></div>
+        <div class="parallax-layer layer-mid"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="hero-content" data-aos="zoom-in">
+            <h1>SEC Filings</h1>
+            <p class="lead">Regulatory filings and disclosures.</p>
+        </div>
+    </section>
+
+    <!-- TIMELINE VIEW -->
+    <section class="timeline-section">
+        <div class="container timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <span class="timeline-type">10-Q</span>
+                        <span class="timeline-date">Oct 30, 2025</span>
+                    </div>
+                    <div class="timeline-title">Q3 2025 Quarterly Report</div>
+                    <div class="timeline-desc">Financial statements, clinical trial progress, and risk updates for the
+                        quarter ended September 30, 2025.</div>
+                    <div class="timeline-links">
+                        <a href="#" class="timeline-link">PDF</a>
+                        <a href="#" class="timeline-link">XBRL</a>
+                        <a href="#" class="timeline-link">EDGAR</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <span class="timeline-type">8-K</span>
+                        <span class="timeline-date">Oct 15, 2025</span>
+                    </div>
+                    <div class="timeline-title">New Credit Facility Agreement</div>
+                    <div class="timeline-desc">$150M revolving credit line with JPMorgan to fund Phase III trials and
+                        manufacturing.</div>
+                    <div class="timeline-links">
+                        <a href="#" class="timeline-link">PDF</a>
+                        <a href="#" class="timeline-link">EDGAR</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <span class="timeline-type">DEF 14A</span>
+                        <span class="timeline-date">Sep 20, 2025</span>
+                    </div>
+                    <div class="timeline-title">2025 Proxy Statement</div>
+                    <div class="timeline-desc">Annual meeting notice, board nominees, executive compensation, and
+                        governance policies.</div>
+                    <div class="timeline-links">
+                        <a href="#" class="timeline-link">PDF</a>
+                        <a href="#" class="timeline-link">EDGAR</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <span class="timeline-type">10-Q</span>
+                        <span class="timeline-date">Jul 31, 2025</span>
+                    </div>
+                    <div class="timeline-title">Q2 2025 Quarterly Report</div>
+                    <div class="timeline-desc">Revenue growth of 42%, pipeline updates, and operational milestones.
+                    </div>
+                    <div class="timeline-links">
+                        <a href="#" class="timeline-link">PDF</a>
+                        <a href="#" class="timeline-link">XBRL</a>
+                        <a href="#" class="timeline-link">EDGAR</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <span class="timeline-type">S-3</span>
+                        <span class="timeline-date">May 05, 2025</span>
+                    </div>
+                    <div class="timeline-title">Shelf Registration</div>
+                    <div class="timeline-desc">Registration of up to $500M in securities for future capital raises.
+                    </div>
+                    <div class="timeline-links">
+                        <a href="#" class="timeline-link">PDF</a>
+                        <a href="#" class="timeline-link">EDGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTS GRID -->
+    <section class="documents">
+        <div class="container">
+            <div class="documents-grid">
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="doc-icon"><i class="bi bi-file-earmark-text"></i></div>
+                    <div class="doc-body">
+                        <div class="doc-title">Form 4 – Insider Transaction</div>
+                        <div class="doc-info">Filed: Nov 04, 2025</div>
+                        <div class="doc-actions">
+                            <a href="#" class="doc-btn pdf">PDF</a>
+                            <a href="#" class="doc-btn xbrl">XBRL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="doc-icon"><i class="bi bi-shield-check"></i></div>
+                    <div class="doc-body">
+                        <div class="doc-title">Certification of CEO/CFO</div>
+                        <div class="doc-info">Filed: Oct 30, 2025</div>
+                        <div class="doc-actions">
+                            <a href="#" class="doc-btn pdf">PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="doc-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <div class="doc-body">
+                        <div class="doc-title">Earnings Press Release</div>
+                        <div class="doc-info">Filed: Oct 30, 2025</div>
+                        <div class="doc-actions">
+                            <a href="#" class="doc-btn pdf">PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="doc-icon"><i class="bi bi-journal-text"></i></div>
+                    <div class="doc-body">
+                        <div class="doc-title">Form 10-K (2024)</div>
+                        <div class="doc-info">Filed: Feb 28, 2025</div>
+                        <div class="doc-actions">
+                            <a href="#" class="doc-btn pdf">PDF</a>
+                            <a href="#" class="doc-btn xbrl">XBRL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILING CATEGORIES -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-grid">
+                <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon"><i class="bi bi-journal-text"></i></div>
+                    <div class="category-title">Annual Reports (10-K)</div>
+                    <div class="category-desc">Comprehensive audited financials, business overview, and risk factors.
+                    </div>
+                </div>
+                <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon"><i class="bi bi-graph-up"></i></div>
+                    <div class="category-title">Quarterly Reports (10-Q)</div>
+                    <div class="category-desc">Unaudited financial results and management's discussion & analysis.</div>
+                </div>
+                <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon"><i class="bi bi-bell"></i></div>
+                    <div class="category-title">Current Reports (8-K)</div>
+                    <div class="category-desc">Material events including earnings, agreements, and leadership changes.
+                    </div>
+                </div>
+                <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-icon"><i class="bi bi-people"></i></div>
+                    <div class="category-title">Proxy Statements (DEF 14A)</div>
+                    <div class="category-desc">Shareholder voting, director elections, and executive compensation
+                        details.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="resources">
+        <div class="resource-grid">
+            <div class="resource-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="resource-icon"><i class="bi bi-calendar-event"></i></div>
+                <div class="resource-title">Filing Calendar</div>
+                <div class="resource-desc">Upcoming filing dates and earnings schedule.</div>
+            </div>
+            <div class="resource-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="resource-icon"><i class="bi bi-headset"></i></div>
+                <div class="resource-title">IR Contact</div>
+                <div class="resource-desc">Reach out for filing questions or clarifications.</div>
+            </div>
+            <div class="resource-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="resource-icon"><i class="bi bi-shield-lock"></i></div>
+                <div class="resource-title">Compliance Portal</div>
+                <div class="resource-desc">Secure access to insider filings and disclosures.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" data-aos="fade-up">
+        <div class="container">
+            <h3>Never Miss a Filing</h3>
+            <p>Get instant email alerts for new SEC submissions, earnings, and material events.</p>
+            <button class="btn-cta">Subscribe to Alerts <i class="bi bi-bell"></i></button>
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+  // Initialize AOS
+  AOS.init({ 
+    duration: 1000, 
+    once: true, 
+    offset: 80 
+  });
+
+  // Mouse Parallax: Desktop only (no touch devices)
+  document.addEventListener('DOMContentLoaded', function () {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    // Only enable on desktop (no touch support)
+    if (window.innerWidth > 992 && !('ontouchstart' in window)) {
+      hero.addEventListener('mousemove', function (e) {
+        const layers = document.querySelectorAll('.parallax-layer');
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+
+        layers.forEach((layer, i) => {
+          const speed = (i + 1) * 12;
+          const moveX = (x / speed) - 50; // Center around 0
+          const moveY = (y / speed) - 50;
+          layer.style.transform = `translate(${moveX}%, ${moveY}%)`;
+        });
+      });
+
+      // Optional: Reset on mouse leave
+      hero.addEventListener('mouseleave', function () {
+        document.querySelectorAll('.parallax-layer').forEach(layer => {
+          layer.style.transform = 'translate(0%, 0%)';
+        });
+      });
+    }
+  });
+</script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+<script src="/assets/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

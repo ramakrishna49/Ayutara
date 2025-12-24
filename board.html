@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+<style>
+:root {
+  --dark: #062E3F;
+  --deep: #08394A;
+  --teal: #0F6D7A;
+  --white: #ffffff;
+  --text-mid: #44606B;
+  --bg-light: #F7FAFB;
+
+  /* Primary */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;     /* ✅ stops side scrolling */
+  scroll-behavior: smooth;
+}
+
+/* ✅ CSS ANIMATIONS */
+@keyframes fadeUp {
+  0% {opacity: 0; transform: translateY(40px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes zoomIn {
+  0% {opacity: 0; transform: scale(.85);}
+  100% {opacity: 1; transform: scale(1);}
+}
+.fade-up { animation: fadeUp 1.1s ease forwards; }
+.fade-in { animation: fadeIn 1.2s ease forwards; }
+.zoom-in { animation: zoomIn 1.2s ease forwards; }
+
+
+/* ✅ HERO (GRADIENT) */
+.directors-hero {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--teal));
+  padding: 160px 15px 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  width:100%;
+}
+
+.directors-hero-content {
+  max-width: 880px;
+  margin:auto;
+  padding: 0 15px;
+}
+
+.directors-hero-title {
+  font-weight: 900;
+  letter-spacing: .8px;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height:1.15;
+  margin-bottom: 18px;
+  animation: fadeUp 1.1s ease;
+}
+
+.directors-hero-text {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+  opacity: 1;
+  animation: fadeIn 1.5s ease;
+}
+
+/* ✅ HERO BUTTONS */
+.directors-hero-buttons {
+  margin-top: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  animation: fadeUp 1.6s ease;
+}
+
+.dh-primary-btn {
+  background: var(--white);
+  color: var(--primary-dark);
+  border-radius: 50px;
+  padding: 14px 34px;
+  font-weight: 700;
+  border: none;
+  transition: .3s;
+  font-size: 1rem;
+}
+.dh-primary-btn:hover {
+  background: #e1e9ff;
+  transform: translateY(-3px);
+}
+
+.dh-outline-btn {
+  border-radius: 50px;
+  padding: 14px 34px;
+  font-weight: 700;
+  border: 2px solid var(--white);
+  color: var(--white);
+  background: transparent;
+  transition: .3s;
+  font-size: 1rem;
+}
+.dh-outline-btn:hover {
+  background: var(--white);
+  color: var(--dark);
+  transform: translateY(-3px);
+}
+
+
+/* ✅ ABOUT SECTION */
+.about-board {
+  padding: 80px 0;
+}
+.about-board h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+.about-board p {
+  color: var(black);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+/* ✅ STAT BOX */
+.stats-box {
+  background: var(--teal);
+  padding: 28px;
+  border-radius: 16px;
+  color: var(black);
+  text-align:center;
+  animation: zoomIn 1.2s ease;
+}
+.stats-box h3 {
+  font-size: 2.3rem;
+  font-weight: 800;
+}
+.stats-box p {
+  opacity: .92;
+}
+
+
+/* ✅ SECTION TITLES */
+.section-title {
+  text-align:center;
+  margin-bottom: 3rem;
+}
+.section-title h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+.section-title p {
+  color: var(--text-mid);
+  max-width: 520px;
+  margin: auto;
+  line-height: 1.65;
+}
+
+
+/* ✅ DIRECTOR CARD */
+.director-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow:hidden;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 1s ease;
+}
+.director-card:hover {
+  transform: translateY(-8px);
+}
+
+.director-img {
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.ribbon {
+  position: absolute;
+  background: var(--primary);
+  color: white;
+  padding: 6px 16px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.director-body {
+  padding: 1.7rem;
+  text-align:center;
+}
+.director-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--dark);
+}
+.director-desc {
+  font-size: .95rem;
+  color: var(--text-mid);
+  margin-top: .6rem;
+  line-height: 1.5;
+}
+
+
+/* ✅ Excellence Section */
+.excellence {
+  background: var(--deep);
+  padding: 80px 20px;
+  color: var(--white);
+  text-align:center;
+}
+.excellence h3 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  animation: fadeIn 1.2s ease;
+}
+
+
+/* ✅ CTA */
+.cta {
+  background: var(--bg-light);
+  padding: 80px 0;
+  text-align:center;
+}
+.cta button {
+  padding: 0.9rem 2.3rem;
+  background: var(--primary);
+  border-radius: 50px;
+  color:white;
+  font-weight: 700;
+  border:none;
+  transition:.3s;
+}
+.cta button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+
+/* ✅ RESPONSIVE FIXES */
+@media(max-width: 768px) {
+  .directors-hero {
+    padding: 140px 15px 120px;
+  }
+}
+
+@media(max-width: 576px) {
+  .directors-hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .director-img {
+    height: 200px;
+  }
+}
+</style>
+  
+</head>
+<!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+<body>
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item active" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+<!-- ✅ HERO -->
+<section id="directorsHero" class="directors-hero">
+  <div class="directors-hero-content">
+    <h1 class="directors-hero-title">Board of Directors</h1>
+    <p class="directors-hero-text">
+      Leading Medisafe with scientific excellence & global expertise
+      empowering tomorrow’s radiopharmaceutical care.
+    </p>
+
+    <div class="directors-hero-buttons">
+      <button class="btn dh-primary-btn">Our Mission →</button>
+      <button class="btn dh-outline-btn">About Medisafe</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ✅ ABOUT BOARD -->
+<section class="about-board fade-up">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <div class="col-lg-7">
+        <h2>Global Expertise, Unified Vision</h2>
+        <p>
+         Our Board blends clinical, scientific, and strategic expertise from across the world. Each member contributes to advancing radioligand therapies & expanding access to cancer care globally.
+
+Together, they uphold world-class governance, research integrity & innovation while prioritizing patient outcomes.
+        </p>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="stats-box mb-3">
+          <h3>40+</h3>
+          <p>Years Combined RLT Excellence</p>
+        </div>
+        <div class="stats-box">
+          <h3>15+</h3>
+          <p>Global Academic Partners</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ✅ DIRECTORS -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="section-title fade-in">
+      <h2>Leadership Panel</h2>
+      <p>Meet the visionaries guiding Medisafe’s strategic growth & scientific excellence.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- D1 -->
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="director-card">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1502767089025-6572583495b0?w=800" class="director-img">
+            <div class="ribbon">Chairman</div>
+          </div>
+          <div class="director-body">
+            <h4 class="director-name">Dr. Arvind Nair</h4>
+            <p class="director-desc">
+              25+ years oncology & radiopharma leadership. Former Novartis strategy leader.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- D2 -->
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="director-card">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800" class="director-img">
+            <div class="ribbon">Executive Director</div>
+          </div>
+          <div class="director-body">
+            <h4 class="director-name">Dr. Meera Reddy</h4>
+            <p class="director-desc">
+              Ex-AIIMS specialist; pioneered radiopharma clinical protocols across Asia & Europe.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- D3 -->
+      <div class="col-lg-4 col-md-6 fade-up">
+        <div class="director-card">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800" class="director-img">
+            <div class="ribbon">Independent Director</div>
+          </div>
+          <div class="director-body">
+            <h4 class="director-name">Ravi Patel</h4>
+            <p class="director-desc">
+              Life-sciences investor supporting global clinical translation & oncology scale-up.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ✅ EXCELLENCE -->
+<section class="excellence fade-in">
+  <h3>Innovation Powered, People Centered</h3>
+  <p>
+    We uphold excellence through research, innovation, safety & global medical partnership.
+  </p>
+</section>
+
+
+<!-- ✅ CTA -->
+<section class="cta fade-in">
+  <h2 class="fw-bold mb-3" style="color: #062E3F;">Join Our Mission</h2>
+  <p class="mb-4" style="color: #062E3F;">
+    Partner with us to transform outcomes & shape next-generation cancer care.
+  </p>
+  <button>Contact Us →</button>
+</section>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+ <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/script.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

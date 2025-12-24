@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+
+
+  <style>
+    .hero-video-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: #0f172a;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      animation: ultraSlowZoom 180s infinite linear;
+    }
+
+    @keyframes ultraSlowZoom {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.75) 100%);
+      z-index: 2;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #1070b9, #a0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .z-3 {
+      position: relative;
+      z-index: 3;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-video-section h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-video-section .lead {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+
+
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+
+         
+       
+
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- HERO SECTION WITH ULTRA-SLOW VIDEO + AYUTARA CONTENT -->
+  <section class="hero-video-section position-relative overflow-hidden">
+    <!-- Background Video -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="/assets/20251103_0631_Remix Video_remix_01k93kq2mbfw69yceb5vdfhkxh.mp4" type="video/mp4">
+      <source src="/Ayutara-zip/Ayutara/assets/20251103_0631_Remix Video_remix_01k93kq2mbfw69yceb5vdfhkxh.mp4"
+        type="video/webm">
+    </video>
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Content -->
+    <div class="container position-relative z-3 text-center text-white px-4 py-5" data-aos="fade-up">
+      <span class="badge bg-white text-dark fw-semibold d-inline-block mb-3 px-4 py-2 rounded-pill">
+        Pioneering Precision Cancer Theranostics
+      </span>
+
+      <h1 class="display-3 fw-bold mb-4">
+        Ayutara: <span class="gradient-text">Redefining Precision Oncology</span>
+      </h1>
+
+      <p class="lead mb-5 opacity-90" style="max-width: 800px; margin: 0 auto;">
+        Ayutara Therapeutics is a discovery-stage radiopharmaceutical biotechnology company advancing
+        next-generation cancer theranostics through the integrated development of targeted
+        radiopharmaceutical therapies and companion diagnostics.
+      </p>
+
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="/tech-overview.html" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">Our Science</a>
+        <a href="/pipeline.overview.html" class="btn btn-light btn-lg px-5 py-3 rounded-pill text-primary">View
+          Pipeline</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 about-image mb-5 mb-lg-0">
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            alt="About Our Company" class="img-fluid">
+        </div>
+        <div class="col-lg-6 about-content">
+          <h2>About Ayutara</h2>
+          <p>
+            Ayutara Therapeutics is a discovery-stage radiopharmaceutical biotechnology company
+            focused on advancing precision cancer theranostics through targeted therapies and
+            companion diagnostics.
+          </p>
+
+          <p>
+            By integrating advanced ligand engineering, optimized chelator chemistry, and precision
+            radiation delivery, Ayutara is addressing tumor retention, off-target toxicity, and
+            clinical scalability—core challenges in modern radiopharmaceutical development.
+          </p>
+
+          <a href="about-overview.html" class="btn btn-primary">Our Story</a>
+
+          <div class="stats">
+            <div class="row text-center">
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number">10+</div>
+                  <div class="stat-label">Years Experience</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number">15+</div>
+                  <div class="stat-label">Researchers</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number">3</div>
+                  <div class="stat-label">Pipeline Programs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content">
+          <h1>Pioneering Precision Cancer Theranostics</h1>
+
+          <p>
+            We design precision alpha and beta radiopharmaceuticals alongside copper-based diagnostic
+            imaging agents to selectively target and destroy cancer cells while minimizing exposure to
+            healthy tissue. Our programs are initially focused on prostate cancer and solid tumors,
+            with platform scalability across multiple oncology indications.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="contact.html" class="btn btn-primary">Our Approach</a>
+            <a href="pipeline.overview.html" class="btn btn-outline-primary">View Pipeline</a>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-image mt-5 mt-lg-0">
+          <img
+            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            alt="Medical Research" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Core Values</h2>
+        <p>Guiding principles that drive our innovation and commitment to improving healthcare</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon icon-primary">
+              <i class="bi bi-gear-fill"></i>
+            </div>
+            <h5>Innovation</h5>
+            <p>
+              Advancing radiopharmaceutical science through precision molecular engineering,
+              translational rigor, and scalable clinical development.
+            </p>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon icon-secondary">
+              <i class="bi bi-heart-pulse"></i>
+            </div>
+            <h5>Patient Focus</h5>
+            <p>
+              Every program is designed to maximize therapeutic impact while prioritizing patient
+              safety, tolerability, and clinical accessibility.
+            </p>
+
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon icon-accent">
+              <i class="bi bi-globe"></i>
+            </div>
+            <h5>Global Impact</h5>
+            <p>
+              Building radiopharmaceutical platforms capable of global deployment across oncology
+              indications and healthcare systems.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="technology">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Technology Platform</h2>
+        <p>
+          Leveraging advanced ligand engineering, optimized chelator chemistry, and precision
+          radiation delivery to overcome key limitations of current radiopharmaceuticals.
+        </p>
+
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon">
+              <i class="bi bi-capsule"></i>
+            </div>
+            <h4>Precision Radiopharmaceutical Platform</h4>
+
+            <p>
+              Ayutara’s platform integrates rational molecular design with alpha and beta
+              radiopharmaceutical payloads to achieve sustained tumor retention and controlled
+              biodistribution.
+            </p>
+
+            <p>
+              Our approach addresses tumor targeting, radioactive stability, and clinical scalability
+              across multiple oncology indications.
+            </p>
+
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <h4>Theranostic Integration</h4>
+
+            <p>
+              We pair targeted radiopharmaceutical therapies with copper-based diagnostic imaging
+              agents to enable patient selection, treatment monitoring, and translational precision.
+            </p>
+
+            <p>
+              This integrated theranostic strategy aligns scientific innovation with regulatory and
+              clinical requirements.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline Section -->
+  <section class="pipeline">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Pipeline</h2>
+        <p>
+          A platform-driven oncology pipeline advancing precision radiopharmaceutical therapies
+          from discovery toward clinical readiness.
+        </p>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="pipeline-item">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0">PALI-2108</h4>
+              <span class="phase-badge">Phase 1 Ready</span>
+            </div>
+            <p class="mb-2"><strong>Indication:</strong> Inflammatory Bowel Disease (IBD)</p>
+            <p class="mb-2"><strong>Mechanism:</strong> Oral PDE4 Inhibitor Prodrug</p>
+            <p class="mb-0">A novel, orally administered PDE4 inhibitor prodrug designed to improve tolerability while
+              maintaining efficacy in treating moderate-to-severe IBD.</p>
+          </div>
+
+          <div class="pipeline-item">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0">PALI-2204</h4>
+              <span class="phase-badge">Preclinical</span>
+            </div>
+            <p class="mb-2"><strong>Indication:</strong> Atopic Dermatitis</p>
+            <p class="mb-2"><strong>Mechanism:</strong> Topical PDE4 Inhibitor</p>
+            <p class="mb-0">A topical formulation targeting inflammatory skin conditions with improved local delivery
+              and reduced systemic exposure.</p>
+          </div>
+
+          <div class="pipeline-item">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0">PALI-2301</h4>
+              <span class="phase-badge">Discovery</span>
+            </div>
+            <p class="mb-2"><strong>Indication:</strong> Rheumatoid Arthritis</p>
+            <p class="mb-2"><strong>Mechanism:</strong> Novel Anti-inflammatory Target</p>
+            <p class="mb-0">Early-stage program targeting a novel inflammatory pathway with potential applications in
+              multiple autoimmune conditions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Partner With Us to Advance Patient Care</h2>
+      <p>
+        Ayutara is an SEC-compliant, investor-accessible radiopharmaceutical company built under
+        Regulation CF and Regulation A+, enabling broad participation in advancing precision
+        oncology from discovery to clinical impact.
+      </p>
+
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="contact.html" class="btn btn-light">Get In Touch</a>
+        <a href="Investors-overview.html" class="btn btn-outline-light">Investor Relations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">
+            Ayutara Therapeutics is advancing precision radiopharmaceutical therapies and diagnostics
+            designed to improve cancer outcomes and quality of life worldwide.
+          </p>
+
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.querySelector('.hero-video');
+      if (video) {
+        video.playbackRate = 0.70; // 4x slower
+        video.addEventListener('loadedmetadata', () => {
+          video.playbackRate = 0.70;
+        });
+      }
+    });
+  </script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

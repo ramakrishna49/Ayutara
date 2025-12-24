@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+   <style>
+        :root {
+            --blue: #1d4ed8;
+            --blue-light: #dbeafe;
+            --blue-dark: #1e3a8a;
+            --blue-bg: #f0f9ff;
+            --ink: #0f172a;
+            --gray: #f8fafc;
+            --steel: #64748b;
+            --radius-xl: 3rem;
+            --radius-lg: 2rem;
+            --shadow: 0 15px 40px rgba(29, 78, 216, 0.12);
+            --shadow-deep: 0 30px 70px rgba(0, 0, 0, 0.18);
+            --transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+           
+            background: var(--gray);
+            color: var(--ink);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO – SPLIT SCREEN WITH 3D MOLECULE ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            background: var(--gray);
+        }
+
+        .hero-left {
+            background: linear-gradient(135deg, var(--blue-bg) 0%, #dbeafe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(29,78,216,0.1), transparent 60%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .pali-badge {
+            display: inline-block;
+            background: var(--blue);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 10px 30px rgba(29,78,216,0.3);
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 7vw, 5.5rem);
+            font-weight: 900;
+            color: var(--blue-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .hero .lead {
+            font-size: clamp(1.1rem, 3vw, 1.35rem);
+            color: var(--steel);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        }
+
+        .hero-right {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .molecule-orbit {
+            width: clamp(260px, 70vw, 380px);
+            height: clamp(260px, 70vw, 380px);
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .orbit-path {
+            position: absolute;
+            border: 2px dashed var(--blue-light);
+            border-radius: 50%;
+            animation: rotateOrbit 20s linear infinite;
+        }
+
+        .orbit-path:nth-child(1) { 
+            width: 100%; height: 100%; top: 0; left: 0; 
+        }
+        .orbit-path:nth-child(2) { 
+            width: 70%; height: 70%; top: 15%; left: 15%; 
+            animation-duration: 16s; animation-direction: reverse; 
+        }
+        .orbit-path:nth-child(3) { 
+            width: 40%; height: 40%; top: 30%; left: 30%; 
+            animation-duration: 12s; 
+        }
+
+        .molecule-core {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: clamp(70px, 18vw, 90px); 
+            height: clamp(70px, 18vw, 90px);
+            background: var(--blue);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            box-shadow: 0 0 60px rgba(29,78,216,0.6);
+            z-index: 5;
+            animation: pulseCore 2s infinite ease-in-out;
+        }
+
+        @keyframes rotateOrbit {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseCore {
+            0%, 100% { box-shadow: 0 0 60px rgba(29,78,216,0.6); }
+            50% { box-shadow: 0 0 90px rgba(29,78,216,0.9); }
+        }
+
+        /* ===== INDICATIONS – GLASSMORPHISM CARDS ===== */
+        .indications {
+            padding: 4rem 1rem;
+            background: var(--blue-bg);
+            position: relative;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-deep);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .ind-icon {
+            width: clamp(60px, 15vw, 80px);
+            height: clamp(60px, 15vw, 80px);
+            background: var(--blue-light);
+            color: var(--blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: clamp(1.6rem, 4vw, 2rem);
+            box-shadow: 0 12px 35px rgba(29,78,216,0.2);
+        }
+
+        .glass-card h5 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .glass-card p {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        /* ===== PIPELINE ROADMAP – HORIZONTAL SCROLL ===== */
+        .roadmap {
+            padding: 4rem 1rem;
+            background: white;
+            overflow: hidden;
+        }
+
+        .roadmap-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1.5rem 1rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .roadmap-container::-webkit-scrollbar { display: none; }
+
+        .milestone {
+            flex: 0 0 clamp(260px, 75vw, 320px);
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 1.8rem;
+            box-shadow: var(--shadow);
+            scroll-snap-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .milestone:hover {
+            transform: scale(1.04);
+            box-shadow: var(--shadow-deep);
+        }
+
+        .milestone::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -50px;
+            width: 50px;
+            height: 4px;
+            background: var(--blue-light);
+            z-index: 1;
+        }
+
+        .milestone:first-child::before { display: none; }
+
+        .milestone-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--blue);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: -62px;
+            transform: translateY(-50%);
+            z-index: 2;
+            box-shadow: 0 0 0 5px white;
+        }
+
+        .milestone:first-child .milestone-dot { display: none; }
+
+        .milestone-badge {
+            background: var(--blue);
+            color: white;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .milestone h5 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .milestone p {
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        }
+
+        /* ===== SAFETY PROFILE – RADIAL CHART ===== */
+        .safety {
+            padding: 4rem 1rem;
+            background: var(--gray);
+        }
+
+        .radial-chart {
+            position: relative;
+            width: clamp(200px, 60vw, 240px);
+            height: clamp(200px, 60vw, 240px);
+            margin: 0 auto;
+        }
+
+        .radial-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(var(--blue-light) 0%, var(--blue-light) 75%, #e2e8f0 75%, #e2e8f0 100%);
+            filter: blur(20px);
+            opacity: 0.7;
+        }
+
+        .radial-value {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: clamp(130px, 40vw, 160px);
+            height: clamp(130px, 40vw, 160px);
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+
+        .radial-num {
+            font-size: clamp(2.2rem, 6vw, 3rem);
+            font-weight: 900;
+            color: var(--blue);
+        }
+
+        .radial-label {
+            color: var(--steel);
+            font-weight: 600;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .safety ul {
+            padding-left: 1.2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .safety li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* ===== NEWS TICKER ===== */
+        .ticker {
+            background: var(--blue);
+            color: white;
+            padding: 0.8rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: scrollTicker 35s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            margin-right: 2.5rem;
+            font-weight: 600;
+        }
+
+        .ticker-item a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .ticker-item a:hover {
+            border-bottom-color: white;
+        }
+
+        @keyframes scrollTicker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--ink);
+            color: white;
+            padding: 3rem 1rem 1.5rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        }
+
+        footer h5 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+        }
+
+        footer p {
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        }
+
+        /* ===== RESPONSIVE ADJUSTMENTS ===== */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 3rem 1rem;
+            }
+            .hero-content { 
+                text-align: center; 
+                max-width: 600px; 
+                margin: 0 auto; 
+            }
+            .hero-right {
+                order: -1;
+                padding-top: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { padding: 1.6rem; }
+            .milestone { 
+                flex: 0 0 clamp(240px, 70vw, 280px);
+                padding: 1.5rem;
+            }
+            .milestone::before { left: -40px; width: 40px; }
+            .milestone-dot { left: -52px; }
+            .radial-chart { width: 200px; height: 200px; }
+            .radial-value { width: 130px; height: 130px; }
+            .radial-num { font-size: 2.4rem; }
+            .ticker { font-size: 0.85rem; }
+            .ticker-item { margin-right: 2rem; }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2.5rem; }
+            .pali-badge { 
+                font-size: 0.8rem; 
+                padding: 0.5rem 1rem; 
+                margin-bottom: 1.2rem;
+            }
+            .ind-icon { width: 60px; height: 60px; font-size: 1.6rem; }
+            .milestone-badge { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+            .milestone h5 { font-size: 1.1rem; }
+            .milestone p { font-size: 0.85rem; }
+            .radial-num { font-size: 2rem; }
+            .safety ul { padding-left: 1rem; }
+            .ticker-item { margin-right: 1.5rem; }
+        }
+
+        @media (max-width: 400px) {
+            .hero { padding: 2rem 0.5rem; }
+            .indications, .roadmap, .safety { padding: 3rem 0.5rem; }
+            .glass-card, .milestone { padding: 1.2rem; }
+            .ticker { padding: 0.6rem 0; }
+        }
+    </style>
+</head>
+<body>
+  <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+            <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+        
+      </a>
+      
+      <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+  <i class="bi bi-list fs-2"></i>
+</button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+               <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+              <li><a class="dropdown-item" href="board.html">Board</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle"  id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+              <li><a class="dropdown-item" href="tech-precision.html">Precision</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+            </ul>
+          </li>
+
+          <!-- Pipeline -->
+          <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" id="pipelineDropdown" role="button" data-bs-toggle="dropdown">
+              Pipeline
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="pipeline.overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="pali-2108.html">PALI-2108</a></li>
+            </ul>
+          </li>
+
+          <!-- Clinical Trials -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle"  id="clinicalDropdown" role="button" data-bs-toggle="dropdown">
+              Clinical Trials
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="trails-overview.html">Overview</a></li>
+              <li><a class="dropdown-item active" href="clinical-pali-2108.html">Clinical PALI-2108</a></li>
+            </ul>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="Investors-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- HERO – SPLIT SCREEN -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-content" data-aos="fade-right">
+                <div class="pali-badge">PALI-2108</div>
+                <h1>PALI-2108</h1>
+                <p class="lead">Once‑daily oral program advancing toward Phase 2 for UC and FSCD.</p>
+                <p>A selective JAK1/TYK2 inhibitor with gut-restricted exposure, designed for superior efficacy and safety in inflammatory bowel disease.</p>
+            </div>
+        </div>
+        <div class="hero-right" data-aos="fade-left">
+            <div class="molecule-orbit">
+                <div class="orbit-path"></div>
+                <div class="orbit-path"></div>
+                <div class="orbit-path"></div>
+                <div class="molecule-core">
+                    <i class="bi bi-capsule"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDICATIONS -->
+    <section class="indications">
+        <div class="container">
+            <h2 class="text-center mb-4 fw-bold" data-aos="fade-up">Target Indications</h2>
+            <div class="row g-3 g-md-4">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card">
+                        <div class="ind-icon"><i class="bi bi-droplet"></i></div>
+                        <h5 class="fw-bold">Ulcerative Colitis (UC)</h5>
+                        <p>Moderate-to-severe UC patients unresponsive to conventional therapy. Aiming for mucosal healing and steroid-free remission.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card">
+                        <div class="ind-icon"><i class="bi bi-shield-fill"></i></div>
+                        <h5 class="fw-bold">Fistulizing Crohn’s Disease (FSCD)</h5>
+                        <p>Perianal and enterocutaneous fistulas. Targeting fistula closure and sustained clinical response.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIPELINE ROADMAP -->
+    <section class="roadmap">
+        <div class="container">
+            <h2 class="text-center mb-4 fw-bold" data-aos="fade-up">Development Roadmap</h2>
+            <div class="roadmap-container">
+                <div class="milestone" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="milestone-dot"></div>
+                    <span class="milestone-badge">Q4 2024</span>
+                    <h5>IND Filing</h5>
+                    <p>DCGI & FDA submission completed.</p>
+                </div>
+                <div class="milestone" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="milestone-dot"></div>
+                    <span class="milestone-badge">Q1 2025</span>
+                    <h5>Phase 1 SAD/MAD</h5>
+                    <p>First-in-human safety & PK in 48 volunteers.</p>
+                </div>
+                <div class="milestone" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="milestone-dot"></div>
+                    <span class="milestone-badge">Q3 2025</span>
+                    <h5>Phase 1b in UC</h5>
+                    <p>Proof-of-concept in 30 patients.</p>
+                </div>
+                <div class="milestone" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="milestone-dot"></div>
+                    <span class="milestone-badge">Q1 2026</span>
+                    <h5>Phase 2 Start</h5>
+                    <p>Global multi-center trial initiation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAFETY PROFILE -->
+    <section class="safety">
+        <div class="container">
+            <h2 class="text-center mb-4 fw-bold" data-aos="fade-up">Safety Advantage</h2>
+            <div class="row align-items-center g-4">
+                <div class="col-md-6 order-md-2" data-aos="fade-left">
+                    <div class="radial-chart">
+                        <div class="radial-bg"></div>
+                        <div class="radial-value">
+                            <div class="radial-num">75%</div>
+                            <div class="radial-label">Gut-Restricted</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                    <ul>
+                        <li><strong>Minimal systemic exposure</strong> – < 5% bioavailability</li>
+                        <li><strong>No hematologic signals</strong> in preclinical models</li>
+                        <li><strong>No CV risk markers</strong> observed in Phase 1</li>
+                        <li><strong>Well-tolerated</strong> up to 800mg QD</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS TICKER -->
+    <div class="ticker">
+        <div class="ticker-content">
+            <span class="ticker-item"><a href="#">PALI-2108 Granted Fast Track by DCGI</a></span>
+            <span class="ticker-item"><a href="#">Phase 1 Topline Data at ECCO 2025</a></span>
+            <span class="ticker-item"><a href="#">$45M Series B Led by Matrix Partners India</a></span>
+            <span class="ticker-item"><a href="#">Partnership with AIIMS Delhi for Phase 2</a></span>
+            <span class="ticker-item"><a href="#">PALI-2108 Granted Fast Track by DCGI</a></span>
+        </div>
+    </div>
+
+   
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 60,
+            easing: 'ease-out-quart'
+        });
+
+        // Duplicate ticker for seamless loop
+        const ticker = document.querySelector('.ticker-content');
+        if (ticker) {
+            ticker.innerHTML += ticker.innerHTML;
+        }
+    </script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+<script src="/assets/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

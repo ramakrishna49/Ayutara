@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayutara - Innovating Medicine</title>
+
+ <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+ 
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Bootstrap Icons) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/assets/style.css" />
+  <style>
+        :root {
+            --navy-dark: #0a1a2e;
+            --blue-deep: #1e40af;
+            --cyan-glow: #06b6d4;
+            --light-blue: #dbeafe;
+            --white: #ffffff;
+            --off-white: #f9fcff;
+            --ink: #1e293b;
+            --steel: #475569;
+            --radius-xl: 36px;
+            --radius-lg: 24px;
+            --shadow-soft: 0 15px 50px rgba(30, 64, 175, 0.12);
+            --shadow-hover: 0 25px 70px rgba(30, 64, 175, 0.2);
+            --transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            
+            background: var(--off-white);
+            color: var(--ink);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* HERO - NEUMORPHIC + PARTICLE EFFECT */
+        .hero {
+            min-height: 80vh;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--blue-deep) 70%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 90px 20px 60px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .particle-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(6, 182, 212, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+                opacity: 0.6;
+            }
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: var(--radius-xl);
+            padding: 55px 45px;
+            max-width: 950px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 4px 16px rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 4px 16px rgba(255, 255, 255, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 12px 40px rgba(6, 182, 212, 0.25), inset 0 6px 20px rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7.5vw, 5.2rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: -1.8px;
+            background: linear-gradient(90deg, #ffffff, #dbeafe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .lead {
+            font-size: 1.35rem;
+            color: rgba(255, 255, 255, 0.94);
+            max-width: 680px;
+            margin: 0 auto 2.2rem;
+            font-weight: 400;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--navy-dark);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 7px;
+            background: linear-gradient(90deg, var(--blue-deep), var(--cyan-glow));
+            border-radius: 4px;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--steel);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 36px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--blue-deep), var(--cyan-glow));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-icon {
+            width: 78px;
+            height: 78px;
+            background: linear-gradient(135deg, var(--blue-deep), var(--cyan-glow));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 12px 35px rgba(30, 64, 175, 0.3);
+        }
+
+        .contact-role {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            margin-bottom: 10px;
+        }
+
+        .contact-name {
+            font-size: 1.15rem;
+            color: var(--steel);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .contact-item i {
+            color: var(--cyan-glow);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .contact-item a {
+            color: var(--blue-deep);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--cyan-glow);
+        }
+
+        /* OFFICE LOCATIONS */
+        .locations {
+            padding: 100px 5%;
+            background: #f1f5f9;
+            text-align: center;
+        }
+
+        .locations h3 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .locations p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--steel);
+            font-size: 1.1rem;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .location-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .location-city {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            margin-bottom: 12px;
+        }
+
+        .location-address {
+            font-size: 0.98rem;
+            color: var(--steel);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .location-map {
+            height: 180px;
+            background: #e2e8f0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .location-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: var(--transition);
+        }
+
+        .location-card:hover .location-map img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 100px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .faq-question {
+            padding: 20px 28px;
+            font-weight: 600;
+            color: var(--ink);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-weight: 900;
+            color: var(--cyan-glow);
+            font-size: 1.3rem;
+        }
+
+        .faq-answer {
+            padding: 0 28px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            background: #f8fafc;
+            color: var(--steel);
+            font-size: 0.98rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px 28px;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--navy-dark), var(--blue-deep));
+            color: white;
+            padding: 110px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 65%);
+            animation: rotate 30s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cta h3 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2.8rem;
+            font-size: 1.2rem;
+            opacity: 0.94;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta {
+            background: var(--cyan-glow);
+            color: white;
+            padding: 18px 52px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: none;
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.35);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 55px rgba(6, 182, 212, 0.45);
+            background: white;
+            color: var(--blue-deep);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .hero {
+                min-height: 70vh;
+                padding: 80px 5% 50px;
+            }
+
+            .hero-content {
+                padding: 45px 35px;
+            }
+
+            .contact-section,
+            .locations,
+            .faq,
+            .cta {
+                padding: 80px 5%;
+            }
+
+            .section-header h2 {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 65vh;
+                padding: 70px 4% 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero .lead {
+                font-size: 1.15rem;
+            }
+
+            .contact-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq h3,
+            .cta h3 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 40px 25px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .contact-card,
+            .location-card {
+                padding: 28px;
+            }
+
+            .btn-cta {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+  
+</head>
+<body>
+    <!-- PAGE LOADER WITH "Loading..." TEXT ANIMATION -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-text">
+      <span>A</span><span>y</span><span>u</span><span>t</span><span>a</span><span>r</span><span>a</span>
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <!-- Logo and Brand -->
+      <a class="navbar-brand" style="gap: 16px;" href="index.html">
+        <div class="logo-icon">
+          <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:60px; height:60px; border-radius: 50px;">
+        </div>
+
+      </a>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <!-- About -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+              About
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="about-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="cab.html">CAB</a></li>
+            </ul>
+          </li>
+
+          <!-- Tech -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="techDropdown" role="button" data-bs-toggle="dropdown">
+              Technology
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tech-overview.html">Overview</a></li>
+              <li><a class="dropdown-item" href="publications.html">Publications</a></li>
+               <li><a class="dropdown-item" href="pipeline.overview.html">pipeline</a></li>
+            </ul>
+          </li>
+          <!-- Clinical Trials -->
+           <li class="nav-item">
+            <a class="nav-link" href="clinical-trials.overview.html">Clinical Process</a>
+          </li>
+
+          <!-- Investors -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" id="investorsDropdown" role="button" data-bs-toggle="dropdown">
+              Investors
+            </a>
+            <ul class="dropdown-menu">
+              
+              <li><a class="dropdown-item" href="press.html">Press</a></li>
+              <li><a class="dropdown-item" href="events.html">Events</a></li>
+              <li><a class="dropdown-item" href="presentations.html">Presentations</a></li>
+              <li><a class="dropdown-item" href="analyst-coverage.html">Analyst Coverage</a></li>
+              <li><a class="dropdown-item active" href="investor-contacts.html">Investor Contacts</a></li>
+              <li><a class="dropdown-item" href="stock-info.html">Stock Info</a></li>
+              <li><a class="dropdown-item" href="sec-filings.html">SEC Filings</a></li>
+              <li><a class="dropdown-item" href="governance.html">Governance</a></li>
+              <li><a class="dropdown-item" href="email-alerts.html">Email Alerts</a></li>
+              <li><a class="dropdown-item" href="faqs.html">FAQs</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact -->
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="particle-bg" id="particles"></div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="display-5 text-white">Investor Contacts</h1>
+            <p class="lead">IR and media contact details.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Key Contacts</h2>
+            <p>Get in touch with our Investor Relations, Media, and General Inquiry teams.</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- IR Contact -->
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-icon">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="contact-role">Head of Investor Relations</div>
+                <div class="contact-name">Jessica Wong</div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:ir@medisafetherapeutics.com">ir@medisafetherapeutics.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <span>+1 (628) 555-0198</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-calendar-check"></i>
+                        <a href="#">Schedule 1:1 Meeting</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media Contact -->
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-icon">
+                    <i class="bi bi-megaphone"></i>
+                </div>
+                <div class="contact-role">Media & Press Relations</div>
+                <div class="contact-name">Michael Rivera</div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:press@medisafetherapeutics.com">press@medisafetherapeutics.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i>
+                        <span>+1 (628) 555-0271</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <a href="#">Download Press Kit</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Inquiries -->
+            <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="contact-icon">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+                <div class="contact-role">General Inquiries</div>
+                <div class="contact-name">Support Team</div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:info@medisafetherapeutics.com">info@medisafetherapeutics.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-headset"></i>
+                        <span>+1 (628) 555-0100</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-clock"></i>
+                        <span>Mon–Fri, 9AM–6PM PST</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFICE LOCATIONS -->
+    <section class="locations" data-aos="fade-up">
+        <h3>Global Offices</h3>
+        <p>Visit us at our headquarters or regional offices worldwide.</p>
+        <div class="location-grid">
+            <div class="location-card">
+                <div class="location-city">San Francisco, CA (HQ)</div>
+                <div class="location-address">123 Mission Street, Suite 1800<br>San Francisco, CA 94105<br>United States
+                </div>
+                <div class="location-map">
+                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800" alt="SF Office">
+                </div>
+            </div>
+            <div class="location-card">
+                <div class="location-city">Boston, MA</div>
+                <div class="location-address">456 Biotech Ave, Floor 12<br>Cambridge, MA 02142<br>United States</div>
+                <div class="location-map">
+                    <img src="https://images.unsplash.com/photo-1558494950-63f4c3b4e02d?w=800" alt="Boston Office">
+                </div>
+            </div>
+            <div class="location-card">
+                <div class="location-city">London, UK</div>
+                <div class="location-address">1 Canary Wharf, Level 39<br>London E14 5AB<br>United Kingdom</div>
+                <div class="location-map">
+                    <img src="https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?w=800" alt="London Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" data-aos="fade-up">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-item">
+            <div class="faq-question">When is the next earnings call?</div>
+            <div class="faq-answer">
+                Our Q3 2025 earnings call is scheduled for <strong>November 18, 2025, at 8:00 AM PST</strong>. Register
+                via the Investor Relations portal.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How can I receive investor alerts?</div>
+            <div class="faq-answer">
+                Subscribe to our mailing list below or follow us on LinkedIn and X for real-time updates on filings,
+                presentations, and events.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Where are SEC filings available?</div>
+            <div class="faq-answer">
+                All SEC filings (10-K, 10-Q, 8-K) are available on our <a href="#">Investor Relations</a> page and the
+                <a href="#">SEC EDGAR database</a>.
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" data-aos="fade-up">
+        <h3>Stay Informed</h3>
+        <p>Join 15,000+ investors receiving quarterly updates, clinical trial results, and exclusive webcast access.</p>
+        <button class="btn-cta">
+            Subscribe to Updates <i class="bi bi-bell"></i>
+        </button>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+   <script>
+  // Initialize AOS animations
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 80
+  });
+
+  // Floating Particles
+  document.addEventListener('DOMContentLoaded', function () {
+    const particleContainer = document.getElementById('particles');
+    const particleCount = 18;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      const size = Math.random() * 6 + 3;
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const delay = Math.random() * 8;
+      const duration = Math.random() * 10 + 8;
+
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = left + '%';
+      particle.style.top = top + '%';
+      particle.style.animationDelay = delay + 's';
+      particle.style.animationDuration = duration + 's';
+
+      particleContainer.appendChild(particle);
+    }
+  });
+
+  // FAQ Toggle
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  });
+</script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <div class="footer-logo" style="gap: 16px;">
+            <div class="logo-icon">
+              <img src="/assets/Ayutara-Logo.webp" alt="Ayutara Logo" style="width:75px; height:75px;">
+            </div>
+            Ayutara
+          </div>
+          <p class="footer-about">Ayutara Therapeutics is dedicated to developing novel, oral small-molecule therapies for chronic inflammatory diseases with significant unmet medical needs.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Company</h5>
+          <ul class="footer-links">
+            <li><a href="about-overview.html">About Us</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="presentations.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+          <h5 class="footer-heading">Technology</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html">Our Approach</a></li>
+            <li><a href="tech-PDE4 Prodrug.html">PDE4 Prodrug</a></li>
+            <li><a href="tech-precision.html">Precision</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Investors</h5>
+          <ul class="footer-links">
+            <li><a href="Investors-overview.html">Overview</a></li>
+            <li><a href="stock-info.html">Stock Info</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="sec-filings.html">SEC Filings</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h5 class="footer-heading">Corporate Office</h5>
+
+          <p class="mb-1">
+            <strong>Ayutara Therapeutics, Inc.</strong>
+          </p>
+
+          <p class="mb-2">
+            7150 Holland Dr<br>
+            Frisco, TX 75035<br>
+            USA
+          </p>
+
+          <p class="mb-1">
+            <i class="bi bi-envelope"></i>
+            <a href="mailto:info@ayutara.com" style="text-decoration: none; color: ivory;">info@ayutara.com</a>
+          </p>
+
+          <p class="mb-0">
+            <i class="bi bi-briefcase"></i>
+            <a href="mailto:admin@ayutara.com" style="text-decoration: none; color: ivory;">admin@ayutara.com</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ayutara Therapeutics. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+<script src="/assets/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+
+          const dropdownToggle = link.closest('.dropdown-menu')?.previousElementSibling;
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
